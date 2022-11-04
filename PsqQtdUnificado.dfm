@@ -1,0 +1,275 @@
+object frmPsqQtdUnificado: TfrmPsqQtdUnificado
+  Left = 346
+  Top = 238
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Emerion - Estoque consolidado'
+  ClientHeight = 250
+  ClientWidth = 653
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 653
+    Height = 65
+    Align = alTop
+    BevelOuter = bvSpace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    object lbCodigo: TLabel
+      Left = 16
+      Top = 8
+      Width = 150
+      Height = 20
+      Caption = 'Código do Produto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 206
+      Font.Height = -17
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lbDesc: TLabel
+      Left = 16
+      Top = 32
+      Width = 173
+      Height = 20
+      Caption = 'Descrição do produto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 206
+      Font.Height = -17
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lbConta: TLabel
+      Left = 552
+      Top = 10
+      Width = 33
+      Height = 16
+      Caption = '........'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object ggThreads: TGauge
+      Left = 360
+      Top = 8
+      Width = 188
+      Height = 20
+      Progress = 0
+    end
+  end
+  object gQTE: TdxDBGrid
+    Left = 0
+    Top = 65
+    Width = 653
+    Height = 185
+    Bands = <
+      item
+      end>
+    DefaultLayout = True
+    HeaderPanelRowCount = 1
+    KeyField = 'fantemp'
+    ShowSummaryFooter = True
+    SummaryGroups = <
+      item
+        DefaultGroup = False
+        SummaryItems = <
+          item
+            ColumnName = 'gQTEatuqte'
+            SummaryFormat = '#,##0.000'
+            SummaryType = cstSum
+          end>
+        Name = 'gQTESummaryGroup2'
+      end>
+    SummarySeparator = ', '
+    Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    BandFont.Charset = DEFAULT_CHARSET
+    BandFont.Color = clWindowText
+    BandFont.Height = -11
+    BandFont.Name = 'MS Sans Serif'
+    BandFont.Style = []
+    DataSource = DSQTE
+    Filter.Active = True
+    Filter.AutoDataSetFilter = True
+    Filter.Criteria = {00000000}
+    GroupPanelColor = clAppWorkSpace
+    GroupPanelFontColor = clInfoBk
+    GroupNodeColor = clInfoBk
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'MS Sans Serif'
+    HeaderFont.Style = [fsBold]
+    LookAndFeel = lfFlat
+    OptionsBehavior = [edgoAutoSort, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoTabThrough, edgoVertThrough]
+    OptionsCustomize = [edgoBandPanelSizing, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoFullSizing]
+    OptionsDB = [edgoCanNavigation, edgoLoadAllRecords, edgoUseBookmarks]
+    OptionsView = [edgoPreview, edgoRowSelect, edgoUseBitmap]
+    PreviewFont.Charset = DEFAULT_CHARSET
+    PreviewFont.Color = clBlue
+    PreviewFont.Height = -11
+    PreviewFont.Name = 'MS Sans Serif'
+    PreviewFont.Style = []
+    PreviewLines = 0
+    RowFooterColor = clInfoBk
+    RowFooterTextColor = clRed
+    ShowGrid = False
+    ShowHiddenInCustomizeBox = True
+    ShowRowFooter = True
+    object gQTEfantemp: TdxDBGridMaskColumn
+      Width = 123
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'fantemp'
+    end
+    object gQTEDscPro: TdxDBGridMaskColumn
+      Visible = False
+      Width = 693
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'DscPro'
+    end
+    object gQTEqtrqte: TdxDBGridMaskColumn
+      Width = 113
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'qtrqte'
+      SummaryFooterType = cstSum
+      SummaryFooterFormat = '#,##0.000'
+    end
+    object gQTEqtaqte: TdxDBGridMaskColumn
+      Width = 111
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'qtaqte'
+      SummaryFooterType = cstSum
+      SummaryFooterFormat = '#,##0.000'
+    end
+    object gQTEqtdqte: TdxDBGridMaskColumn
+      Width = 102
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'qtdqte'
+      SummaryFooterType = cstSum
+      SummaryFooterFormat = '#,##0.000'
+    end
+    object gQTErmaqte: TdxDBGridMaskColumn
+      Width = 86
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'rmaqte'
+      SummaryFooterType = cstSum
+      SummaryFooterFormat = '#,##0.000'
+    end
+    object gQTEatuqte: TdxDBGridMaskColumn
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Width = 116
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'atuqte'
+      SummaryFooterType = cstSum
+      SummaryFooterFormat = '#,##0.000'
+      SummaryField = 'atuqte'
+    end
+  end
+  object SQLQTE: TClientDataSet
+    Aggregates = <>
+    AggregatesActive = True
+    Params = <>
+    Left = 336
+    Top = 96
+    object SQLQTEfantemp: TStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'fantemp'
+      Size = 70
+    end
+    object SQLQTEqtrqte: TFloatField
+      DisplayLabel = 'Qtd.Reservada'
+      FieldName = 'qtrqte'
+      DisplayFormat = '#,##0.000'
+      EditFormat = '0.000'
+    end
+    object SQLQTEqtaqte: TFloatField
+      DisplayLabel = 'Qtd.Adquirida'
+      FieldName = 'qtaqte'
+      DisplayFormat = '#,##0.000'
+      EditFormat = '0.000'
+    end
+    object SQLQTEqtdqte: TFloatField
+      DisplayLabel = 'Qtd.estoque'
+      FieldName = 'qtdqte'
+      DisplayFormat = '#,##0.000'
+      EditFormat = '0.000'
+    end
+    object SQLQTErmaqte: TFloatField
+      DisplayLabel = 'Qtd.RMA'
+      FieldName = 'rmaqte'
+      DisplayFormat = '#,##0.000'
+      EditFormat = '0.000'
+    end
+    object SQLQTEatuqte: TFloatField
+      DisplayLabel = 'Qtd.Disponível'
+      FieldName = 'atuqte'
+      DisplayFormat = '#,##0.000'
+      EditFormat = '0.000'
+    end
+    object SQLQTEDscPro: TStringField
+      DisplayLabel = 'Descrição produto - Filial'
+      FieldName = 'DscPro'
+      Size = 70
+    end
+  end
+  object DSQTE: TDataSource
+    DataSet = SQLQTE
+    Left = 336
+    Top = 24
+  end
+  object IBQuery1: TIBQuery
+    ObjectView = True
+    CachedUpdates = False
+    SQL.Strings = (
+      'select * from REPLICA')
+    UniDirectional = True
+    Left = 240
+    Top = 144
+  end
+  object IBTransaction1: TIBTransaction
+    Active = False
+    Left = 312
+    Top = 152
+  end
+end

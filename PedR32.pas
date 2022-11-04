@@ -1,0 +1,530 @@
+unit PedR32;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Fpadrao, Grids, Wwdbigrd, Wwdbgrid, hGrid, dxExEdtr, dxEdLib, dxEditor,
+  StdCtrls, ExtCtrls, Buttons, dxCntner, Menus, Db, Wwdatsrc, DBTables,
+  Wwquery, ImgList, RDprint, dxPSCore, dxPSdxTLLnk, dxPSdxDBCtrlLnk,
+  dxPSdxDBGrLnk, dxTL, dxDBCtrl, dxDBGrid, dxDBTLCl, dxGrClms, ppDB, ppDBPipe,
+  ppCtrls, ppStrtch, ppMemo, ppBands, ppClass, ppVar, ppPrnabl, ppCache,
+  ppComm, ppRelatv, ppProd, ppReport, dxColorEdit, dxColorDateEdit, clipbrd;
+
+type
+  TSaveMethod = procedure(const FileName: string; ASaveAll: Boolean) of object;
+
+  TfmPedR32 = class(TfmPadrao)
+    PedRes: TwwQuery;
+    DsRes: TwwDataSource;
+    Label17: TLabel;
+    EdPsqDteres1: TdxColorDateEdit;
+    Label18: TLabel;
+    EdPsqDteres2: TdxColorDateEdit;
+    Label22: TLabel;
+    EdPsqCodVen: TdxColorEdit;
+    BbPsqVen: TSpeedButton;
+    EdPsqNomVen: TdxColorEdit;
+    bbPesquisa: TBitBtn;
+    Label10: TLabel;
+    Bevel1: TBevel;
+    quSql: TwwQuery;
+    Label7: TLabel;
+    Label9: TLabel;
+    bImprime: TBitBtn;
+    rgTipo: TRadioGroup;
+    rgComissao: TRadioGroup;
+    FinCre: TwwQuery;
+    dsCre: TwwDataSource;
+    PedResNUMRES: TIntegerField;
+    PedResDTERES: TDateTimeField;
+    PedResDTEFAT: TDateTimeField;
+    PedResCODVEN: TIntegerField;
+    PedResCODCLI: TIntegerField;
+    PedResNOMCLI: TStringField;
+    PedResTOTLIB: TFloatField;
+    PedResBASCOM: TFloatField;
+    PedResTOTCOM: TFloatField;
+    PedResNRONFS: TStringField;
+    lb_Registro: TLabel;
+    FinCreNUMRES: TIntegerField;
+    FinCreDTERES: TDateTimeField;
+    FinCreDTEFAT: TDateTimeField;
+    FinCreDPGPGC: TDateTimeField;
+    FinCreCODVEN: TIntegerField;
+    FinCreNRONFS: TIntegerField;
+    FinCreTOTLIB: TFloatField;
+    FinCreMEDCOM: TFloatField;
+    FinCreBASCOM: TFloatField;
+    FinCreTOTCOM: TFloatField;
+    FinCreCLIENTE: TStringField;
+    ckDevCan: TCheckBox;
+    PedResCODCLI_1: TIntegerField;
+    PedResNOMCLI_1: TStringField;
+    PedResDTECRE: TDateTimeField;
+    PedResVPPPGC: TFloatField;
+    PedResTOTFAT: TFloatField;
+    PedResMEDCOM: TFloatField;
+    procedure FormShow(Sender: TObject);
+    procedure BbPsqVenClick(Sender: TObject);
+    procedure bbPesquisaClick(Sender: TObject);
+    procedure EdPsqCodVenExit(Sender: TObject);
+    procedure bImprimeClick(Sender: TObject);
+    procedure EdPsqCodEmpKeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    {Private declarations}
+    SeqArq: string;
+  public
+    {Public declarations}
+  end;
+
+var
+  fmPedR32: TfmPedR32;
+
+implementation
+
+uses dxDemoUtils, Bbgeral, Bbfuncao, Bbmensag, ManPri, ManGDB, AuxIni, ManEm9,
+  ManE10;
+
+{$R *.DFM}
+
+procedure TfmPedR32.bbPesquisaClick(Sender: TObject);
+var
+  FilLib, FilLoj, FilVen, FilAte, FaturaSQL, FilDep, FinanceiroSQL, sFiltro, strAuxDev: string;
+const
+  _BR = #13#10;
+begin
+
+  ActiveControl := nil;
+
+  if Trim(EdPsqCodVen.Text) = '' then
+    fmsgErro('Campo de Preenchimento Obrigatorio não Informado.', EdPsqCodVen);
+
+  if Trim(fLimpaStr(EdPsqDteres1.Text)) = '' then
+    fmsgErro('Campo de Preenchimento Obrigatorio não Informado.', EdPsqDteres1);
+
+  if Trim(fLimpaStr(EdPsqDteres2.Text)) = '' then
+    fmsgErro('Campo de Preenchimento Obrigatorio não Informado.', EdPsqDteres2);
+
+  with quSQL, SQL do
+  begin
+
+    Close;
+    Text := ' Select FLGDEL,SEQIMP from GerPar';
+    Open;
+
+    if Trim(FieldbyName('FLGDEL').AsString) = '*' then
+    begin
+
+      GFlgAce := 'Sim';
+
+      if FieldbyName('SEQIMP').AsInteger > 0 then
+        GEmpLog := FieldbyName('SEQIMP').AsInteger;
+
+    end
+    else
+    begin
+
+      GEmpLog := 0;
+      GFlgAce := 'Nao';
+
+    end;
+  end;
+
+  strAuxDev := '';
+
+  if ckDevCan.checked then
+    strAuxDev := ' or PedLib.SitLib = ''Devolvido'' ';
+
+  FaturaSQL := '';
+  if rgComissao.ItemIndex = 0 then
+  begin
+
+    if Trim(EdPsqCodVen.Text) = '' then
+      fmsgErro('Campo de Preenchimento Obrigatorio não Informado.', EdPsqCodVen);
+
+    if Trim(fLimpaStr(EdPsqDteRes1.Text)) = '' then
+      fmsgErro('Campo de Preenchimento Obrigatorio não Informado.', EdPsqDteRes1);
+
+    if Trim(fLimpaStr(EdPsqDteRes2.Text)) = '' then
+      fmsgErro('Campo de Preenchimento Obrigatorio não Informado.', EdPsqDteRes2);
+
+    FilLoj := '';
+
+    if (rgTipo.ItemIndex = 1) or (rgTipo.ItemIndex = 2) then
+    begin
+
+      FilLib := ' Where PedLib.DteFat >= ' + QuotedStr(fDateToSQL(EdPsqDteRes1.Date)) + _BR +
+                '   and PedLib.DteFat <= ' + QuotedStr(fDateToSQL(EdPsqDteRes2.Date)) + _BR +
+                '   and PedLib.CodVen  = ' + QuotedStr(EdPsqCodVen.Text) + _BR +
+                '   and PedLib.IntFin  = ' + QuotedStr('Sim') + _BR +
+                '   and PedLib.ModPfa  = ' + QuotedStr('Vendas') + _BR;
+
+      FilLib := FilLib + ' and ( PedLib.SitLib = ''Faturado'' or PedLib.SitLib = ''Cancelado'' ' + strAuxDev + ')';
+
+      if GFlgAce = 'Sim' then
+        FilLib := FilLib + ' and PedLib.PedTip = 1 and not PedLib.FlgDif = ' + QuotedStr('Sim');
+
+      FaturaSQL := FaturaSQL
+        + ' Select PedLib.NumRes, PedLib.DteRes, PedLib.DteFat, PedLib.CodVen, ' + _BR
+        + ' PedLib.CodCli, FinCli.NomCli, PedLib.TotLib, PedLib.MedCom, ' + _BR
+        + ' PedLib.BasCom, PedLib.TotCom, Cast(PedLib.NroNfs as varchar(10)) NroNfs, ' + _BR
+        + ' PedLib.codcli, FinCli.nomcli, '
+        + ' (select first 1 finpgc.dpgpgc from Finpgc where finpgc.CodEmp = PedLib.CodEmp and finpgc.DteCre = PedLib.dtefat and finpgc.numcre = PedLib.NroNfs order by finpgc.dpgpgc Desc) dtecre, '
+        + ' (select Coalesce(sum(vpppgc),0.0) from Finpgc where finpgc.CodEmp = PedLib.CodEmp and finpgc.DteCre = PedLib.dtefat and finpgc.numcre = PedLib.NroNfs) vpppgc,'
+        + ' PedLib.BasCom/*TOTLIB*/ TOTFAT ' + _BR
+        + ' From PedLib ' + _BR
+        + ' LEFT JOIN FinCli ON (PedLib.CodCli = FinCli.CodCli) ' + _BR
+        + ' join fatped on fatped.codemp = pedlib.codemp and fatped.dteres = pedlib.dteres and fatped.numres = pedlib.numres and fatped.seqlib = pedlib.seqlib ' +
+        _BR
+        + FilLib
+        + ' union all ' + _BR
+        + ' Select PedLib.NumRes, PedLib.DteRes, PedLib.DteFat, PedLib.CodVen, ' + _BR
+        + ' PedLib.CodCli, FinCli.NomCli, PedLib.TotLib, PedLib.MedCom, ' + _BR
+        + ' PedLib.BasCom, PedLib.TotCom, Cast(TRANSDOCL(''998'',PedLib.seqlib,PedLib.NUMRES) as Varchar(10)) NroNfs, ' + _BR
+        + ' PedLib.codcli, FinCli.nomcli, '                                                                                                         
+        + ' (select first 1 finpgc.dpgpgc from Finpgc where finpgc.CodEmp = PedLib.CodEmp and finpgc.DteCre = PedLib.dtefat and finpgc.numcre = TRANSDOCL(''998'',PedLib.seqlib,PedLib.NUMRES) order by finpgc.dpgpgc Desc) dtecre, '
+        + ' (select Coalesce(sum(vpppgc),0.0) from Finpgc where finpgc.CodEmp = PedLib.CodEmp and finpgc.DteCre = PedLib.dtefat and finpgc.numcre = TRANSDOCL(''998'',PedLib.seqlib,PedLib.NUMRES)) vpppgc,'
+        + ' PedLib.BasCom/*TOTLIB*/ TOTFAT ' + _BR
+        + ' From PedLib ' + _BR
+        + ' LEFT JOIN FinCli ON (PedLib.CodCli = FinCli.CodCli) ' + _BR
+        + ' join fatorc on fatorc.codemp = pedlib.codemp and fatorc.dteres = pedlib.dteres and fatorc.numres = pedlib.numres and fatorc.seqlib = pedlib.seqlib ' +
+        _BR
+        + FilLib;
+
+    end;
+
+    if (debughook <> 0) then
+      ClipBoard.AsText := '';
+
+    if ((rgTipo.ItemIndex = 0) or (rgTipo.ItemIndex = 2)) and (Trim(GFlgAce) <> 'Sim') then
+    begin
+
+      if FaturaSQL <> '' then
+        FaturaSQL := FaturaSQL + ' Union ALL ';
+
+      FilLoj := '';
+
+      FilLoj := ' where LojPed.DopRpe >= ' + QuotedStr(fDateToSQL(EdPsqDteRes1.Date)) + _BR +
+        '   and LojPed.DopRpe <= ' + QuotedStr(fDateToSQL(EdPsqDteRes2.Date)) + _BR +
+        '   and LojPed.CodVen  = ' + QuotedStr(EdPsqCodVen.Text) + _BR +
+        '   and LojPed.ModPfa  = ' + QuotedStr('Vendas') + _BR +
+        '   and LojPed.FlgVal  = ' + QuotedStr('Nao') + _BR +
+        '   and LojPed.TipCpa  = ' + QuotedStr('Vendedor') + _BR;
+
+      FilLoj := FilLoj + ' and ( LojPed.SitPed = ''Recebida'' or LojPed.SitPed = ''Cancelada'' )' + _BR;
+
+      FaturaSQL := FaturaSQL
+        + ' Select LojPed.NumPed NumRes, LojPed.DtePed DteRes, LojPed.DopRpe DteFat, ' + _BR
+        + ' LojPed.CodVen, LojPed.CodCli, LojPed.NomCli, LojPed.TotPed TotLib, ' + _BR
+        + ' LojPed.MedCom, LojPed.BasCom, LojPed.TotCom,  Cast(Coalesce(LOJPED.NroNfs,''LOJ'') as varchar(10)) NroNfs, ' + _BR
+        + ' LojPed.codcli, LojPed.nomcli, cast(' + QuotedStr(FormatDateTime('YYYY-MM-DD', EdPsqDteRes2.Date)) +
+        ' as Date) dtecre, 0.0 vpppgc,LojPed.BasCom/*TotPed*/ TOTFAT ' + _BR
+        + ' From LojPed ' + _BR + FilLoj;
+
+    end;
+
+    FaturaSQL := FaturaSQL + ' Order by 3,11 ';
+    PedRes.close;
+    PedRes.sql.text := FaturaSQL;
+
+    if (debughook <> 0) then
+      ClipBoard.AsText := ClipBoard.AsText + _BR + ' --Query 01 ' + _BR + PedRes.sql.text;
+
+    PedRes.Open;
+
+    lb_Registro.Caption := 'Foram encontrados : ' + inttostr(PedRes.RecordCount) + ' Registros no faturamento';
+  end
+  else
+  begin
+    PEDRES.Active := false;
+    Pedres.SQL.Text := ' Select ' + _BR +
+      ' PedLib.NumRes, PedLib.DteRes, PedLib.DteFat, PedLib.CodVen,  ' + _BR +
+      ' PedLib.CodCli, FinCli.NomCli, ' + _BR +
+      ' ((Finpgc.vpppgc*PedLib.TOTLIB)/(pedlib.totger - coalesce(pedlib.totsub,0)))as TotLib, PedLib.MedCom, ' + _BR +
+      ' ((Finpgc.vpppgc*PedLib.BasCom)/(pedlib.totger - coalesce(pedlib.totsub,0)))as Bascom, ' + _BR +
+
+      ' ((case ' + _BR +
+      ' when (coalesce(pedlib.totsub,0) > 0 and finpgc.numcrp = 1) ' + _BR +
+      ' then  Finpgc.vpppgc - (pedlib.totsub / (100/ ( ' + _BR +
+      ' select DSCNOT from fatped fat ' + _BR +
+      ' where 1 = 1 ' + _BR +
+      '      and fat.codemp = pedlib.codemp ' + _BR +
+      '      and fat.dteres = pedlib.dteres ' + _BR +
+      '      and fat.numres = pedlib.numres ' + _BR +
+      '      and fat.seqlib = pedlib.seqlib ' + _BR +
+      ' ))) ' + _BR +
+      ' else ' + _BR +
+      ' Finpgc.vpppgc ' + _BR +
+      ' end) * PedLib.TotCom/(pedlib.totger - coalesce(pedlib.totsub,0)))as TOTCOM, ' + _BR +
+
+
+      ' Cast(PedLib.NroNfs as varchar(10)) NroNfs, ' + _BR +
+      ' PedLib.codcli, FinCli.nomcli,Finpgc.dpgpgc dtecre,' +
+      ' ((Finpgc.vpppgc*PedLib.BasCom)/(pedlib.totger - coalesce(pedlib.totsub,0))) vpppgc,' + _BR +
+      //Finpgc.vpppgc,'+ //Jocy Litec deseja o valor recebido sem da ST ou qualquer outro que aumente o valor
+    ' ((Finpgc.vpppgc*PedLib.BasCom)/(pedlib.totger - coalesce(pedlib.totsub,0)))/*TOTLIB*/ TOTFAT ' + _BR +
+      ' From PedLib ' + _BR +
+      ' join FinCli on PedLib.codcli = FinCli.codcli ' + _BR +
+      ' join Finpgc on finpgc.CodEmp = PedLib.CodEmp and finpgc.numcre = PedLib.nronfs and finpgc.dtecre = PedLib.dtefat ' + _BR +
+      ' join fincre on fincre.CodEmp = finpgc.CodEmp and fincre.numcre = finpgc.numcre and fincre.dtecre = finpgc.dtecre ' + _BR +
+      ' Where Finpgc.dpgpgc >= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres1.Date)) + _BR +
+      ' and Finpgc.dpgpgc <= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres2.Date)) + _BR +
+      ' and PedLib.CodVen  = ' + QuotedStr(EdPsqCodVen.Text) + ' ' + _BR +
+      ' and PedLib.IntFin  = ' + QuotedStr('Sim') + ' ' + _BR +
+      ' and PedLib.ModPfa  = ' + QuotedStr('Vendas') + ' ' + _BR +
+      ' and (PedLib.SitLib = ' + QuotedStr('Faturado') + ' or PedLib.SitLib = ' + QuotedStr('Cancelado') + ' or PedLib.SitLib = ' + QuotedStr('Devolvido') +
+      ' ) ' + _BR +
+      ' Union All' + _BR +
+      ' Select LojPed.NumPed NumRes, LojPed.DtePed DteRes, LojPed.DopRpe DteFat,  ' + _BR +
+      ' LojPed.CodVen, LojPed.CodCli, ' + _BR +
+      ' LojPed.NomCli, LojPed.TotPed TotLib,  LojPed.MedCom, ' + _BR +
+      ' ((Finpgc.vpppgc*LojPed.BasCom)/lojped.totger)as Bascom, ' + _BR +
+      ' ((Finpgc.vpppgc*LojPed.TotCom)/lojped.totger)as TOTCOM,  ' + _BR +
+      ' Cast(LOJPED.NroNfs as varchar(10)) NroNfs, ' + _BR +
+      ' LojPed.codcli, LojPed.nomcli,Finpgc.dpgpgc dtecre,' +
+      ' ((Finpgc.vpppgc*LojPed.BasCom)/lojped.totger) vpppgc,' +
+      ' LojPed.BasCom/*TotPed*/ TOTFAT  ' + _BR + //Finpgc.vpppgc,'+ //Jocy Litec deseja o valor recebido sem da ST ou qualquer outro que aumente o valor
+    ' From LojPed ' + _BR +
+      ' Join LOJFAT on lojped.codemp = lojfat.codemp and lojped.dteped = lojfat.dteped and lojped.numped = lojfat.numped ' + _BR +
+      ' Join Finpgc on lojfat.codemp = finpgc.codemp and lojfat.nronfs = finpgc.numcre and lojfat.DteFat = finpgc.dtecre ' + _BR +
+      ' where ' + _BR +
+      ' Finpgc.dpgpgc >= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres1.Date)) + ' ' + _BR +
+      ' and Finpgc.dpgpgc <= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres2.Date)) + ' ' + _BR +
+      ' and LojPed.CodVen  = ' + QuotedStr(EdPsqCodVen.Text) + ' ' + _BR +
+      ' and LojPed.ModPfa  = ' + QuotedStr('Vendas') + ' ' + _BR +
+      ' and LojPed.FlgVal  = ' + QuotedStr('Nao') + ' ' + _BR +
+      ' and LojPed.TipCpa  = ' + QuotedStr('Vendedor') + ' ' + _BR +
+      ' and ( LojPed.SitPed = ' + QuotedStr('Recebida') + ' or LojPed.SitPed = ' + QuotedStr('Cancelada') + ' ) ' + _BR +
+      ' Union All ' + _BR +
+      ' Select ' + _BR +
+      ' PedLib.NumRes, PedLib.DteRes, PedLib.DteFat, PedLib.CodVen,  ' + _BR +
+      ' PedLib.CodCli, FinCli.NomCli, ' + _BR +
+      ' ((Finpgc.vpppgc*PedLib.TOTLIB)/pedlib.totger)as TotLib, PedLib.MedCom, ' + _BR +
+      ' ((Finpgc.vpppgc*PedLib.BasCom)/pedlib.totger)as Bascom, ' + _BR +
+      ' ((Finpgc.vpppgc*PedLib.TotCom)/pedlib.totger)as TOTCOM, ' + _BR +
+      ' Cast(TRANSDOCL(''998'',PedLib.seqlib,PedLib.NUMRES) as Varchar(10)) NroNfs, ' + _BR +
+      ' PedLib.codcli, FinCli.nomcli,Finpgc.dpgpgc dtecre,' +
+      ' ((Finpgc.vpppgc*PedLib.BasCom)/pedlib.totger) vpppgc,' + _BR +
+      //Finpgc.vpppgc,'+ //Jocy Litec deseja o valor recebido sem da ST ou qualquer outro que aumente o valor
+    ' PedLib.BasCom/*TOTLIB*/ TOTFAT  ' + _BR +
+      ' From PedLib ' + _BR +
+      ' join FinCli on PedLib.codcli = FinCli.codcli ' + _BR +
+      ' join Finpgc on TRANSDOCL(''998'',PedLib.seqlib,PedLib.NUMRES) = finpgc.numcre ' + _BR +
+      ' Where Finpgc.dpgpgc >= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres1.Date)) + _BR +
+      ' and Finpgc.dpgpgc <= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres2.Date)) + _BR +
+      ' and PedLib.CodVen  = ' + QuotedStr(EdPsqCodVen.Text) + ' ' + _BR +
+      ' and PedLib.IntFin  = ' + QuotedStr('Sim') + ' ' + _BR +
+      ' and PedLib.ModPfa  = ' + QuotedStr('Vendas') + ' ' + _BR +
+      ' and (PedLib.SitLib = ' + QuotedStr('Faturado') + ' or PedLib.SitLib = ' + QuotedStr('Cancelado') + ' or PedLib.SitLib = ' + QuotedStr('Devolvido') +
+      ' ) ' + _BR +
+
+
+
+      ' Union All ' + _BR +
+      ' Select ' + _BR +
+      ' PedLib.NumRes, PedLib.DteRes, PedLib.DteFat, PedLib.CodVen,  ' + _BR +
+      ' PedLib.CodCli, FinCli.NomCli, ' + _BR +
+      //Esse trecho foi alterado dia 21/04/2020 para "CORRIGIR" BUG DA COMISSAO
+      //ANTERIOR
+      //' ((Finpgc.vpppgc*PedLib.TOTLIB)/pedlib.totger)as TotLib, PedLib.MedCom, ' + _BR +
+      //DEPOIS
+      ' Finpgc.vpppgc as TotLib, PedLib.MedCom, ' + _BR +
+      ' Finpgc.vpppgc as Bascom, ' + _BR +
+      ' ((Finpgc.vpppgc*PedLib.TotCom)/pedlib.bascom)as TOTCOM, ' + _BR +
+      ' Cast(TRANSDOCL(''999'',0,PedLib.NRONFS) as Varchar(10)) NroNfs, ' + _BR +
+      ' PedLib.codcli, FinCli.nomcli,Finpgc.dpgpgc dtecre,' +
+      ' Finpgc.vpppgc as vpppgc,' + _BR +
+      //Finpgc.vpppgc,'+ //Jocy Litec deseja o valor recebido sem da ST ou qualquer outro que aumente o valor
+      ' Finpgc.vpppgc /*TOTLIB*/ TOTFAT  ' + _BR +
+      ' From PedLib ' + _BR +
+      ' join FinCli on PedLib.codcli = FinCli.codcli ' + _BR +
+      ' join Finpgc on TRANSDOCL(''999'',0,PedLib.NRONFS) = finpgc.numcre ' + _BR +
+      ' Where Finpgc.dpgpgc >= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres1.Date)) + _BR +
+      ' and Finpgc.dpgpgc <= ' + quotedstr(FormatDateTime('mm/dd/yyyy', EdPsqDteres2.Date)) + _BR +
+      ' and PedLib.CodVen  = ' + QuotedStr(EdPsqCodVen.Text) + ' ' + _BR +
+      ' and PedLib.IntFin  = ' + QuotedStr('Sim') + ' ' + _BR +
+      ' and PedLib.ModPfa  = ' + QuotedStr('Vendas') + ' ' + _BR +
+      ' and (PedLib.SitLib = ' + QuotedStr('Faturado') + ' or PedLib.SitLib = ' + QuotedStr('Cancelado') + ' or PedLib.SitLib = ' + QuotedStr('Devolvido') +
+      ' ) ' + _BR +
+
+
+
+      ' Order by 14,11 ';
+
+    if (debughook <> 0) then
+      ClipBoard.AsText := ClipBoard.AsText + _BR + ' --Query 02 ' + _BR + PedRes.sql.text;
+
+    pedres.Active := True;
+
+    lb_Registro.Caption := 'Foram encontrados : ' + inttostr(PEDRES.RecordCount) + ' Registros no recebimento';
+
+  end;
+
+  bImprime.SetFocus;
+
+end;
+
+procedure TfmPedR32.EdPsqCodVenExit(Sender: TObject);
+begin
+  if Trim(EdPsqCodVen.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := 'Select ApeVen From FinVen Where CodVen = ''' + EdPsqCodVen.Text + '''';
+      Open;
+
+      EdPsqNomVen.Text := FieldByName('ApeVen').AsString;
+
+    end;
+
+  end
+  else
+    EdPsqNomVen.Text := '';
+end;
+
+procedure TfmPedR32.BbPsqVenClick(Sender: TObject);
+begin
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    fmAuxIni.TipoPesq := 'V';
+
+    fmAuxIni.ShowModal;
+
+    if fmAuxIni.CodVen > 0 then
+    begin
+
+      EdPsqCodVen.Text := IntToStr(fmAuxIni.CodVen);
+      EdPsqNomVen.Text := fmAuxIni.NomVen;
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+end;
+
+procedure TfmPedR32.FormShow(Sender: TObject);
+begin
+  inherited;
+  EdPsqCodVen.SetFocus;
+
+  lb_Registro.Caption := '';
+end;
+
+procedure TfmPedR32.bImprimeClick(Sender: TObject);
+begin
+  inherited;
+
+  ActiveControl := nil;
+
+  //Opção de comissão por faturamento e recebimento. Feito para litec
+
+//  if rgComissao.ItemIndex = 0 then
+//  begin
+  if PedRes.Active then
+  begin
+    if PedRes.RecordCount > 0 then
+    begin
+      try
+        fmManEm9 := TfmManEm9.Create(Self);
+        if (rgComissao.ItemIndex = 1) then
+        begin
+          fmManEm9.p2Titulo.Caption := 'Resumo de Vendas por Vendedor (Analitico) por Recebimento';
+          //fmManEm9.RLLabel28.Caption := 'Total Recebido';
+          fmManEm9.lbDteRec.Caption := 'Dt. Receb.';
+        end
+        else
+        begin
+          fmManEm9.p2Titulo.Caption := 'Resumo de Vendas por Vendedor (Analitico) por Faturamento';
+          //fmManEm9.RLLabel28.Caption := 'Total Faturado';
+          fmManEm9.lbDteRec.Caption := 'Ult.Receb.';
+
+        end;
+        fmManEm9.RLReport1.PreviewModal;
+      finally
+
+        FreeAndNil(fmManEm9);
+
+      end;
+    end
+    else
+      fmsg('Não há registros a serem visualizados. Favor verifique o filtro e tente novamente.', 'E');
+  end
+  else
+    fmsg('Necessário carregar dados para gerar relatório de comissão. Favor verifique filtro e acione o botão selecionar.', 'E');
+  {  end
+    else
+    begin
+      if FinCre.Active then
+      begin
+        if FinCre.RecordCount > 0 then
+        begin
+          try
+            fmManE10 := TfmManE10.Create(Self);
+            fmManE10.RLReport1.PreviewModal;
+          finally
+
+            FreeAndNil(fmManE10);
+
+          end;
+        end
+        else
+          fmsg('Não há registros a serem visualizados. Favor verifique o filtro e tente novamente.', 'E');
+      end
+      else
+        fmsg('Necessário carregar dados para gerar relatório de comissão. Favor verifique filtro e acione o botão selecionar.', 'E');
+
+    end;}
+end;
+
+procedure TfmPedR32.EdPsqCodEmpKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if not (key in ['0'..'9']) then
+    key := #0;
+end;
+
+procedure TfmPedR32.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+
+  Action := caFree;
+
+end;
+
+procedure TfmPedR32.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  Randomize;
+  SeqArq := copy(FormatDateTime('dd/mm/yyyy', Date), 1, 2) +
+    copy(FormatDateTime('dd/mm/yyyy', Date), 4, 2) +
+    copy(FormatDateTime('dd/mm/yyyy', Date), 7, 4) +
+    copy(TimeToStr(Time), 1, 2) +
+    copy(TimeToStr(Time), 4, 2) +
+    copy(TimeToStr(Time), 7, 2) +
+    FNumZeros(Trim(IntToStr(GUsu_Id)), 3) +
+    FNumZeros(Trim(IntToStr(Random(50000))), 5);
+
+end;
+
+procedure TfmPedR32.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  fmPedR32 := nil;
+end;
+
+end.
+

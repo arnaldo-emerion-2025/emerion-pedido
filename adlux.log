@@ -1,0 +1,1078 @@
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+select * from CAD_CLIENTES
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select Id_LOGIN ID_Cliente, LOGIN Apelido From LOGIN
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select * from GRUPOS
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select
+    grupo_acesso.*,
+    Case when tipo = 1 then 'Site'
+         When tipo = 2 then 'Estrututa'
+         when tipo = 3 then 'Produto'
+    end as Tipo,
+    Case when tipo = 1 then (Select codigo from Cad_sites /**/where id_site = grupo_acesso.id_relaciona)
+         When tipo = 2 then (Select codigo from Cad_estrutura /**/where id_cad_estrutura = grupo_acesso.id_relaciona)
+         when tipo = 3 then (Select Produto from cad_produtos /**/where id_produtos = (Select id_produto from rel_est_prod /**/where id_produto = cad_produtos.id_produtos and id_rel_est_prod = grupo_acesso.id_relaciona))
+    end as Codigo
+
+from grupo_acesso
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select * from Login where login = 'thiago'
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+select * from CAD_EMPRESA
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+INTERBASE - isc_open_blob2
+INTERBASE - isc_blob_info
+INTERBASE - isc_get_segment
+INTERBASE - isc_close_blob
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT CAD_SITES.*,
+(SELECT COUNT(*) FROM CAD_ESTRUTURA /**/WHERE ID_SITE = CAD_SITES.ID_SITE)AS ESTRUTURAS
+FROM CAD_SITES WHERE Exists (Select * from Grupo_acesso where tipo = 1 and id_grupo = (Select id_grupo from Login where id_login = '341') and Permit = 1 and id_relaciona = cad_sites.id_site)  or (id_cliente = '341')
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select Id_LOGIN ID_Cliente, LOGIN Apelido From LOGIN
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT CAD_ESTRUTURA.*, (SELECT CODIGO FROM CAD_SITES /**/WHERE ID_SITE = CAD_ESTRUTURA.ID_SITE) FROM CAD_ESTRUTURA WHERE ID_Site = '136' and Exists (Select * from Grupo_acesso where tipo = 2 and id_grupo = (Select id_grupo from Login where id_login = '341') and Permit = 1 and id_relaciona = cad_Estrutura.id_Cad_Estrutura)  or (id_detentora = '341')
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+select * from TIPO_ESTRUTURA
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select id_site from Cad_Sites where id_cliente = '341' and id_site = '136'
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+select * from CAD_ESTRUTURA
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select Id_LOGIN ID_Cliente, LOGIN Apelido From LOGIN
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select gen_id(gen_cad_estrutura_id,1)as proximo from RDB$DATABASE;
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select Id_LOGIN ID_Cliente, LOGIN Apelido From LOGIN where tipo = 0 and id_Relaciona = '341' or (Id_login = '341')
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_start_transaction
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT * FROM VW_PRODUTOS WHERE id_estrutura = 119 and (Exists (Select * from Grupo_acesso where tipo = 3 and id_grupo = (Select id_grupo from Login where id_login = '341') and Permit = 1 and id_relaciona = vw_produtos.id_relaciona) or (iddetentor = '341'))
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select * from CAD_PRODUTOS
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+INTERBASE - isc_open_blob2
+INTERBASE - isc_blob_info
+INTERBASE - isc_get_segment
+INTERBASE - isc_close_blob
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+INTERBASE - isc_open_blob2
+INTERBASE - isc_blob_info
+INTERBASE - isc_get_segment
+INTERBASE - isc_close_blob
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+INTERBASE - isc_open_blob2
+INTERBASE - isc_blob_info
+INTERBASE - isc_get_segment
+INTERBASE - isc_close_blob
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+INTERBASE - isc_open_blob2
+INTERBASE - isc_blob_info
+INTERBASE - isc_get_segment
+INTERBASE - isc_close_blob
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+Select * from CAD_FABRICANTE
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, C.RDB$CONSTRAINT_NAME, CASE WHEN C.RDB$CONSTRAINT_TYPE='PRIMARY KEY' THEN 1 ELSE 0 END, COALESCE(I.RDB$UNIQUE_FLAG,0), COALESCE(1-I.RDB$INDEX_TYPE,1) FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME WHERE (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) ORDER BY 3, 4
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_allocate_statement
+INTERBASE - isc_start_transaction
+SELECT NULL, NULL, I.RDB$RELATION_NAME, CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END, S.RDB$FIELD_NAME, S.RDB$FIELD_POSITION+1, 1 FROM RDB$INDICES I LEFT OUTER JOIN RDB$RELATION_CONSTRAINTS C ON I.RDB$INDEX_NAME = C.RDB$INDEX_NAME, RDB$INDEX_SEGMENTS S WHERE I.RDB$INDEX_NAME = S.RDB$INDEX_NAME  AND (1<2 OR (1=2)) AND (1<2 OR (1=2)) AND (I.RDB$RELATION_NAME = ? OR (1=2)) AND (CASE WHEN C.RDB$CONSTRAINT_NAME IS NULL THEN I.RDB$INDEX_NAME ELSE C.RDB$CONSTRAINT_NAME END = ? OR (1=1)) ORDER BY 3, 4, 6
+INTERBASE - isc_dsql_prepare
+INTERBASE - isc_dsql_describe_bind
+INTERBASE - SQLDialect = 3
+INTERBASE - isc_dsql_execute
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_free_statement
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_dsql_fetch
+INTERBASE - isc_commit_transaction
+INTERBASE - isc_dsql_free_statement

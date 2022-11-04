@@ -1,0 +1,1906 @@
+unit CmpR14;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Fpadrao, Grids, Wwdbigrd, Wwdbgrid, hGrid, dxExEdtr, dxEdLib, dxEditor,
+  StdCtrls, ExtCtrls, Buttons, dxCntner, Menus, Db, Wwdatsrc, DBTables,
+  Wwquery, ImgList, dxPSCore, dxPSdxTLLnk, dxPSdxDBCtrlLnk, dxPSdxDBGrLnk,
+  dxTL, dxDBCtrl, dxDBGrid, dxDBTLCl, dxGrClms, dxColorPickEdit,
+  dxColorEdit, dxColorDateEdit, clipbrd;
+
+type
+  TSaveMethod = procedure(const FileName: string; ASaveAll: Boolean) of object;
+
+  TfmCmpR14 = class(TfmPadrao)
+    PedLb2: TwwQuery;
+    DsLb2: TwwDataSource;
+    Label17: TLabel;
+    EdDteFat1: TdxColorDateEdit;
+    Label18: TLabel;
+    EdDteFat2: TdxColorDateEdit;
+    bPesquisa: TBitBtn;
+    Label10: TLabel;
+    Bevel1: TBevel;
+    Label2: TLabel;
+    Bevel2: TBevel;
+    quSql: TwwQuery;
+    Label9: TLabel;
+    SaveDialog: TSaveDialog;
+    dxComponentPrinter: TdxComponentPrinter;
+    dxComponentPrinterLink1: TdxDBGridReportLink;
+    PopUpMenu: TPopupMenu;
+    Exportarpara1: TMenuItem;
+    HTML: TMenuItem;
+    Excel: TMenuItem;
+    XML: TMenuItem;
+    grLb2: TdxDBGrid;
+    bImprime: TBitBtn;
+    Label5: TLabel;
+    EdCodCli: TdxColorEdit;
+    bPsqCli: TSpeedButton;
+    EdNomCli: TdxColorEdit;
+    Label13: TLabel;
+    Label110: TLabel;
+    Label111: TLabel;
+    Label112: TLabel;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
+    Label3: TLabel;
+    Label1: TLabel;
+    Label7: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    Label8: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    EdCodCat: TdxColorEdit;
+    EdCodTip: TdxColorEdit;
+    EdCodMrc: TdxColorEdit;
+    EdCodClp: TdxColorEdit;
+    EdCodGru: TdxColorEdit;
+    EdCodSub: TdxColorEdit;
+    EdCodPro: TdxColorEdit;
+    BbPsqPro: TSpeedButton;
+    BbPsqSub: TSpeedButton;
+    BbPsqGru: TSpeedButton;
+    BbPsqClp: TSpeedButton;
+    bPsqMrc: TSpeedButton;
+    bPsqTip: TSpeedButton;
+    bPsqCat: TSpeedButton;
+    EdNomCat: TdxColorEdit;
+    EdNomTip: TdxColorEdit;
+    EdNomMrc: TdxColorEdit;
+    EdNomClp: TdxColorEdit;
+    EdNomGru: TdxColorEdit;
+    EdNomSub: TdxColorEdit;
+    EdNomPro: TdxColorEdit;
+    PedLb2CODCLI: TIntegerField;
+    PedLb2ULTQTS: TFloatField;
+    PedLb2TOTLB2: TFloatField;
+    PedLb2NOMCLI: TStringField;
+    ULTQTS: TdxDBGridMaskColumn;
+    TOTLB2: TdxDBGridMaskColumn;
+    NOMCLI: TdxDBGridMaskColumn;
+    PedLb2CODITE: TStringField;
+    PedLb2NUMRES: TIntegerField;
+    PedLb2DTERES: TDateTimeField;
+    PedLb2NRONFS: TIntegerField;
+    PedLb2DTEFAT: TDateTimeField;
+    DTERES: TdxDBGridColumn;
+    DTEFAT: TdxDBGridColumn;
+    NRONFS: TdxDBGridColumn;
+    NUMRES: TdxDBGridColumn;
+    PedLb2APEVEN: TStringField;
+    APEVEN: TdxDBGridColumn;
+    PedLb2DTESDA: TDateTimeField;
+    PedLb2DTEENT: TDateTimeField;
+    DTESDA: TdxDBGridColumn;
+    DTEENT: TdxDBGridColumn;
+    Label14: TLabel;
+    Label15: TLabel;
+    EdCodVen: TdxColorEdit;
+    bPsqVen: TSpeedButton;
+    EdNomVen: TdxColorEdit;
+    PedLb2TOTCST: TFloatField;
+    TOTCST: TdxDBGridColumn;
+    PedLb2FLGTAB: TStringField;
+    PedLb2VCSLB2: TFloatField;
+    VCSLB2: TdxDBGridColumn;
+    FLGTAB: TdxDBGridColumn;
+    PedLb2VLQLB2: TFloatField;
+    VLQLB2: TdxDBGridColumn;
+    PedLb2TOTREN: TFloatField;
+    TOTREN: TdxDBGridColumn;
+    Label16: TLabel;
+    Label19: TLabel;
+    EdPsqModPfa: TdxColorPickEdit;
+    PedLb2SEQARQ: TStringField;
+    PedLb2CODVEN: TIntegerField;
+    PedLb2CODCLP: TStringField;
+    PedLb2CODGRU: TStringField;
+    PedLb2CODSUB: TStringField;
+    PedLb2CODPRO: TStringField;
+    PedLb2SITLIB: TStringField;
+    SITLIB: TdxDBGridColumn;
+    CODCLI: TdxDBGridColumn;
+    PedLb2FLGENC: TStringField;
+    PedLb2MODPFA: TStringField;
+    MODPFA: TdxDBGridColumn;
+    Colunas1: TMenuItem;
+    Label20: TLabel;
+    Label21: TLabel;
+    edPesRef: TdxColorEdit;
+    btnPesRef: TSpeedButton;
+    grLb2CODNCM: TdxDBGridMaskColumn;
+    PedLb2NOMMRC: TStringField;
+    grLb2Column20: TdxDBGridColumn;
+    PedLb2CODNCM: TStringField;
+    grLb2Column21: TdxDBGridColumn;
+    grLb2Column22: TdxDBGridColumn;
+    grLb2Column23: TdxDBGridColumn;
+    grLb2Column24: TdxDBGridColumn;
+    grLb2Column25: TdxDBGridColumn;
+    PedLb2CFOP_PRODUTO: TStringField;
+    PedLb2UF_CLIENTE: TStringField;
+    PedLb2MUNICIPIO_CLIENTE: TStringField;
+    PedLb2REFERENCIA_PRODUTO: TStringField;
+    PedLb2QTD_EM_ESTOQUE: TFloatField;
+    NOMMRC: TdxDBGridColumn;
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure bPesquisaClick(Sender: TObject);
+    procedure bImprimeClick(Sender: TObject);
+    procedure grLb2ReloadGroupList(Sender: TObject);
+    procedure HTMLClick(Sender: TObject);
+    procedure ExcelClick(Sender: TObject);
+    procedure XMLClick(Sender: TObject);
+    procedure bPsqCliClick(Sender: TObject);
+    procedure EdCodCliExit(Sender: TObject);
+    procedure EdCodCliKeyPress(Sender: TObject; var Key: Char);
+    procedure BbPsqClpClick(Sender: TObject);
+    procedure EdCodClpExit(Sender: TObject);
+    procedure BbPsqGruClick(Sender: TObject);
+    procedure EdCodGruExit(Sender: TObject);
+    procedure BbPsqSubClick(Sender: TObject);
+    procedure EdCodSubExit(Sender: TObject);
+    procedure BbPsqProClick(Sender: TObject);
+    procedure EdCodProExit(Sender: TObject);
+    procedure bPsqTipClick(Sender: TObject);
+    procedure EdCodTipExit(Sender: TObject);
+    procedure bPsqCatClick(Sender: TObject);
+    procedure EdCodCatExit(Sender: TObject);
+    procedure bPsqMrcClick(Sender: TObject);
+    procedure EdCodMrcExit(Sender: TObject);
+    procedure bPsqVenClick(Sender: TObject);
+    procedure EdCodCatKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodTipKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodMrcKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodClpKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodGruKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodSubKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodProKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodCliKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodVenKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EdCodVenExit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
+    procedure Colunas1Click(Sender: TObject);
+    procedure btnPesRefClick(Sender: TObject);
+    procedure edPesRefExit(Sender: TObject);
+    procedure edPesRefKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    {Private declarations}
+    procedure Save(ADefaultExt, AFilter, AFileName: string; AMethod: TSaveMethod);
+  public
+    {Public declarations}
+    SeqArq, sBase, sFiltro, sFiltroFP: string;
+
+  end;
+
+var
+  fmCmpR14: TfmCmpR14;
+
+const
+  _B = #13 + #10;
+
+implementation
+
+uses dxDemoUtils, Bbgeral, Bbfuncao, Bbmensag, PsqGru, PsqSub, PsqPro, PsqClp,
+  PsqTip, ManGDB, AuxIni, AuxPsq, ManCol, PsqRef;
+
+{$R *.DFM}
+
+procedure TfmCmpR14.Save(ADefaultExt, AFilter, AFileName: string; AMethod: TSaveMethod);
+begin
+  with SaveDialog do
+  begin
+
+    DefaultExt := ADefaultExt;
+
+    Filter := AFilter;
+
+    FileName := AFileName;
+
+    if Execute then
+      AMethod(FileName, True);
+
+  end;
+end;
+
+procedure TfmCmpR14.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  Randomize;
+  SeqArq := copy(FormatDateTime('dd/mm/yyyy', Date), 1, 2) +
+    copy(FormatDateTime('dd/mm/yyyy', Date), 4, 2) +
+    copy(FormatDateTime('dd/mm/yyyy', Date), 7, 4) +
+    copy(TimeToStr(Time), 1, 2) +
+    copy(TimeToStr(Time), 4, 2) +
+    copy(TimeToStr(Time), 7, 2) +
+    FNumZeros(Trim(IntToStr(GUsu_Id)), 3) +
+    FNumZeros(Trim(IntToStr(Random(50000))), 5);
+
+  SaveDialog.InitialDir := ExtractFilePath(Application.ExeName);
+
+end;
+
+procedure TfmCmpR14.bPesquisaClick(Sender: TObject);
+begin
+
+  ActiveControl := nil;
+
+  if GFlgAce <> 'Sim' then
+  begin
+
+    with quSQL, SQL do
+    begin
+
+      Close;
+      Text := ' Select FLGDEL,SEQIMP from GerPar';
+      Open;
+
+      if Trim(FieldbyName('FLGDEL').AsString) = '*' then
+      begin
+
+        GFlgAce := 'Sim';
+
+        if FieldbyName('SEQIMP').AsInteger > 0 then
+          GEmpLog := FieldbyName('SEQIMP').AsInteger;
+
+      end
+      else
+      begin
+
+        GEmpLog := 0;
+        GFlgAce := 'Nao';
+
+      end;
+    end;
+  end;
+
+  sFiltro := '';
+  sFiltro := sFiltro + ' Where  PedLib.SitLib = ' + QuotedStr('Faturado')+_BR;
+
+  if Trim(fLimpaStr(EdDteFat1.Text)) <> '' then
+    sFiltro := sFiltro + ' and PEDLIB.DteFat >= ' + QuotedStr(fDateToSQL(EdDteFat1.Date))+_BR;
+  if Trim(fLimpaStr(EdDteFat2.Text)) <> '' then
+    sFiltro := sFiltro + ' and PEDLIB.DteFat <= ' + QuotedStr(fDateToSQL(EdDteFat2.Date))+_BR;
+
+  if Trim(EdCodCli.Text) <> '' then
+    sFiltro := sFiltro + ' and PEDLIB.CodCli = ' + QuotedStr(EdCodCli.Text)+_BR;
+  if Trim(EdCodVen.Text) <> '' then
+    sFiltro := sFiltro + ' and PEDLIB.CodVen = ' + QuotedStr(EdCodVen.Text)+_BR;
+  if Trim(EdCodGru.Text) <> '' then
+    sFiltro := sFiltro + ' and PEDLB2.CodGru = ' + QuotedStr(EdCodGru.Text)+_BR;
+  if Trim(EdCodSub.Text) <> '' then
+    sFiltro := sFiltro + ' and PEDLB2.CodSub = ' + QuotedStr(EdCodSub.Text)+_BR;
+  if Trim(EdCodPro.Text) <> '' then
+    sFiltro := sFiltro + ' and PEDLB2.CodPro = ' + QuotedStr(EdCodPro.Text)+_BR;
+  //Comentado para funcionar na PORTAL Se der problema na katya, descomentar essa linha.
+// sFiltro := sFiltro + ' and FATPED.AtuEst = ' + QuotedStr('Sim');
+  if Trim(EdPsqModPfa.Text) <> '' then
+    sFiltro := sFiltro + ' and PEDLIB.ModPfa = ' + QuotedStr(EdPsqModPfa.Text)+_BR;
+  if GFlgAce = 'Sim' then
+    sFiltro := sFiltro + ' and PEDLIB.PedTip = 1 and not PEDLIB.FlgDif = ' + QuotedStr('Sim')+_BR;
+
+  sFiltroFP := '';
+  sFiltroFP := sFiltroFP + ' Where  FatPed.SitFat = ' + QuotedStr('Faturado')+_BR;
+  if Trim(fLimpaStr(EdDteFat1.Text)) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPed.DteFat >= ' + QuotedStr(fDateToSQL(EdDteFat1.Date))+_BR;
+  if Trim(fLimpaStr(EdDteFat2.Text)) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPed.DteFat <= ' + QuotedStr(fDateToSQL(EdDteFat2.Date))+_BR;
+  if Trim(EdCodCli.Text) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPed.CodCli = ' + QuotedStr(EdCodCli.Text)+_BR;
+  if Trim(EdCodVen.Text) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPed.CodVen = ' + QuotedStr(EdCodVen.Text)+_BR;
+  if Trim(EdCodGru.Text) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPe2.CodGru = ' + QuotedStr(EdCodGru.Text)+_BR;
+  if Trim(EdCodSub.Text) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPe2.CodSub = ' + QuotedStr(EdCodSub.Text)+_BR;
+  if Trim(EdCodPro.Text) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPe2.CodPro = ' + QuotedStr(EdCodPro.Text)+_BR;
+  if Trim(EdPsqModPfa.Text) <> '' then
+    sFiltroFP := sFiltroFP + ' and FatPed.ModPfa = ' + QuotedStr(EdPsqModPfa.Text)+_BR;
+  if GFlgAce = 'Sim' then
+    sFiltroFP := sFiltroFP + ' and FatPed.PedTip = 1 and not FatPed.FlgDif = ' + QuotedStr('Sim')+_BR;
+
+  if fmManGDB.BuscaSimples('FATPAR', 'FLGCOT', '1=1', '') = 'Sim' then
+  begin
+    if Trim(edPesRef.Text) <> '' then
+      sFiltroFP := sFiltroFP + ' and FATPE2.RefPe2 like '+Quotedstr( edPesRef.Text + '%')+_BR;
+  end
+  else
+  begin
+    if Trim(edPesRef.Text) <> '' then
+      sFiltro := sFiltro + ' and PEDLB2.RefLb2 like '+Quotedstr( edPesRef.Text + '%')+_BR;
+  end;
+
+
+  with quSQL, SQL do
+  begin
+
+    Close;
+    Text := ' Delete From CmpR14 Where CmpR14.SeqArq = ' + QuotedStr(SeqArq)+_BR;
+    ExecSQL;
+
+  end;
+
+  with quSQL, SQL do
+  begin
+
+    Close;
+    if fmManGDB.BuscaSimples('FATPAR', 'FLGCOT', '1=1', '') = 'Sim' then
+    begin
+      Text := ' Insert Into CmpR14(SeqArq,CodCli,CodVen,NumRes,FlgTab,DteRes,NroNfs,DteFat,DteSda,DteEnt,CodClp,CodGru,CodSub,CodPro,UltQts,TotCst,TotRen,VcsLb2,TotLb2,VlqLb2,SitLib,ModPfa, RefPro)'
+        +_BR+
+        ' Select ' + QuotedStr(SeqArq) + ',' +_BR+
+        ' FATPED.CodCli, ' +_BR+
+        ' FATPED.CodVen, ' +_BR+
+        ' FATPED.NumRes, ' +_BR+
+        ' (Select first 1 a.FlgTab from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as FLGTAB, ' +_BR+
+        ' FATPED.DteRes, ' +_BR+
+        ' FATPED.NroNfs, ' +_BR+
+        ' FATPED.DteFat, ' +_BR+
+        ' FATPED.DteSda, ' +_BR+
+        ' FATPED.DteEnt, ' +_BR+
+        ' FATPE2.CodClp, ' +_BR+
+        ' FATPE2.CodGru, ' +_BR+
+        ' FATPE2.CodSub, ' +_BR+
+        ' FATPE2.CodPro, ' +_BR+
+        ' FATPE2.qtppe2 as  UltQts, ' +_BR+
+        ' (Select first 1 a.VcsLB2*a.UltQTS from pedLB2 a ' +_BR+
+        ' where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres order by seqlib desc)as VCSRE2, ' +_BR+
+        ' (Select first 1 a.TotRen from pedLB2 a ' +_BR+
+        ' where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres and codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp order by seqlib desc)as TotRen, ' +_BR+
+        ' (Select first 1 a.VcsLB2 from pedLB2 a ' +_BR+
+        ' where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres order by seqlib desc)as VCSRE2, ' +_BR+
+        ' Round((Select first 1 a.VLQLB2*a.UltQTS from pedLB2 a ' +_BR+
+        '                                        where a.CodEmp = FATPED.CodEmp and  a.DteRes = FATPED.DteRes  and  a.NumRes = FATPED.NumRes and a.codgru = FATPE2.codgru and a.codsub = fatpe2.codsub and a.codpro =fatpe2.codpro and codclp = ' + 'FATPE2.codclp order by seqlib desc),4)as TotLb2,'+_BR+
+        ' Round((Select first 1 VLQLB2 from pedLB2 a ' +_BR+
+        '                             where a.CodEmp = FATPED.CodEmp '+_BR+
+        '                               and a.DteRes = FATPED.DteRes  '+_BR+
+        '                               and a.NumRes = FATPED.NumRes '+_BR+
+        '                               and a.codgru = FATPE2.codgru '+_BR+
+        '                               and a.codsub = fatpe2.codsub '+_BR+
+        '                               and a.codpro =fatpe2.codpro ' +_BR+
+        '                               and codclp = FATPE2.codclp '+_BR+
+        '                             order by seqlib desc),4) ' + 'as VlqRe2, '+_BR+
+
+        ' FATPED.SitFAT, ' +_BR+
+        ' FATPED.ModPfa, ' + _BR+
+        ' FATPE2.refpe2  ' + _BR+
+        ' From FATPE2 ' + _BR+
+        ' Join FATPED on FATPE2.CodEmp = FATPED.CodEmp '+_BR+
+        ' and FATPE2.DteRes = FATPED.DteRes '+_BR+
+        ' and FATPE2.NumRes = FATPED.NumRes '+_BR+
+        ' and FATPE2.SeqLib = FATPED.SeqLib ' +_BR+
+        sFiltroFP;
+    end
+    else
+    begin
+      Text := ' Insert Into CmpR14(SeqArq,CodCli,CodVen,NumRes,FlgTab,DteRes,NroNfs,DteFat,DteSda,DteEnt,CodClp,CodGru,CodSub,CodPro,UltQts,TotCst,TotRen,VcsLb2,TotLb2,VlqLb2,SitLib,ModPfa,refpro)'
+        +_BR+
+        ' Select ' + QuotedStr(SeqArq) + ',' +_BR+
+        ' PEDLIB.CodCli, ' +_BR+
+        ' PEDLIB.CodVen, ' +_BR+
+        ' PEDLIB.NumRes, ' +_BR+
+        ' (Select first 1 a.FlgTab from pedres a where a.codemp = PEDLIB.codemp and a.dteres = PEDLIB.dteres and a.numres = PEDLIB.numres)as FLGTAB, ' +_BR+
+        ' PEDLIB.DteRes, ' +_BR+
+        ' PEDLIB.NroNfs, ' +_BR+
+        ' PEDLIB.DteFat, ' +_BR+
+        ' PEDLIB.DteSda, ' +_BR+
+        ' PEDLIB.DteEnt, ' +_BR+
+        ' PEDLB2.CodClp, ' +_BR+
+        ' PEDLB2.CodGru, ' +_BR+
+        ' PEDLB2.CodSub, ' +_BR+
+        ' PEDLB2.CodPro, ' +_BR+
+        ' PEDLB2.qtplb2 as  UltQts, ' +_BR+
+        ' round((pedLB2.VcsLB2*pedLB2.UltQTS),4) as VCSRE2, ' +_BR+
+        ' pedLB2.TotRen as TotRen, ' +_BR+
+        ' pedLB2.VcsLB2 as VCSRE2, ' +_BR+
+        ' Round((PEDLB2.VLQLB2*PEDLB2.UltQTS),4) as TotLb2, ' +_BR+
+        ' Round((PEDLB2.VLQLB2),4) as VlqRe2, ' +_BR+
+        ' PEDLIB.SitLib, ' +_BR+
+        ' PEDLIB.ModPfa, ' +_BR+
+        ' PEDLB2.reflb2 ' +_BR+
+        ' From PEDLB2 ' +_BR+
+        ' Join PEDLIB on PEDLB2.CodEmp = PEDLIB.CodEmp '+_BR+
+        ' and PEDLB2.DteRes = PEDLIB.DteRes '+_BR+
+        ' and PEDLB2.NumRes = PEDLIB.NumRes '+_BR+
+        ' and PEDLB2.SeqLib = PEDLIB.SeqLib ' +
+        sFiltro;
+    end;
+    {
+       Campos alterado pelo Thiago a Pedido da Katya 25/05/2011
+                      '  (Select (a.TotCst) from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as TotCst, '+
+                      '  (Select a.TotRen from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as TotRen, '+
+                      '  (Select (a.VcsRe2) from pedre2 a where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = '+'fatped.dteres and a.numres = fatped.numres)as VCSRE2, '+
+                      ' (FATPE2.TotGe2) as TotLb2, '+
+                      '  Round((VlqPe2 - VdrPe2)*((FATPE2.IPIPE2/100)+1),4) as VlqRe2, '+
+       }
+
+    if DebugHook > 0 then
+      clipboard.astext := 'Select 0001'+#10#13+quSQL.SQL.Text;
+
+    ExecSQL;
+
+  end;
+
+  with PedLb2, SQL do
+  begin
+
+    Close;
+    Text := ' Select CmpR14.*, estpro.codncm, estmrc.nommrc, ' + _BR+
+      ' CAST((IntStrZeros(CmpR14.CodVen,3)||' + QuotedStr('-') + '||FinVen.ApeVen||' + QuotedStr('') + '||' + QuotedStr('') + '||' + QuotedStr('') + '||' +_BR+
+        QuotedStr('') + ')as varchar(100)) as ApeVen,' +_BR+
+      ' FinCli.NomCli,' +_BR+
+      ' CmpR14.CodGru || _UNICODE_FSS ' + QuotedStr('.') + ' || CmpR14.CodSub || _UNICODE_FSS ' + QuotedStr('.') + ' || CmpR14.CodPro || _UNICODE_FSS ' +_BR+
+        QuotedStr(' - ') + ' || EstPro.DscPro as CodIte,' +_BR+
+
+      '(select first 1 CODCFO from pedre2 re2 ' + _BR +
+    ' where re2.numres = cmpr14.numres ' + _BR +
+        ' and re2.codclp = cmpr14.codclp ' + _BR +
+        ' and re2.codgru = cmpr14.codgru ' + _BR +
+        ' and re2.codsub = cmpr14.codsub ' + _BR +
+        ' and re2.codpro = cmpr14.codpro) as CFOP_PRODUTO, ' + _BR +
+ ' fincli.uffcli as UF_CLIENTE, fincli.cifcli as MUNICIPIO_CLIENTE, estpro.refpro as REFERENCIA_PRODUTO, ' + _BR +
+ ' (select first 1 Round(qte.QtdQte-((SELECT QTD_RESERVADA FROM RESERVAS(QTE.CODEMP,QTE.CODCLP,QTE.CODGRU,QTE.CODSUB,QTE.CODPRO))+qte.QtdRma),4) from estqte qte ' + _BR +
+  ' where qte.codclp = cmpr14.codclp ' + _BR +
+        ' and qte.codgru = cmpr14.codgru ' + _BR +
+        ' and qte.codsub = cmpr14.codsub ' + _BR +
+        ' and qte.codpro = cmpr14.codpro) as QTD_EM_ESTOQUE ' + _BR +
+
+      ' From CmpR14' +_BR+
+         ' left join fincli on fincli.codcli = cmpr14.codcli' +_BR+
+         ' left join finven on finven.codven = cmpr14.codven' +_BR+
+         ' left join estpro on CmpR14.CodClp = EstPro.CodClp and' +_BR+
+                             ' CmpR14.CodGru = EstPro.CodGru and' +_BR+
+                             ' CmpR14.CodSub = EstPro.CodSub and' +_BR+
+                             ' CmpR14.CodPro = EstPro.CodPro' +_BR+
+         ' left join estmrc on estmrc.codmrc = estpro.codmrc ' +_BR+
+         ' where 1 = 1 ' +_BR+
+      ' and CmpR14.CodCli = FinCli.CodCli and CmpR14.SeqArq = ' + QuotedStr(SeqArq)+_BR;
+
+    if Trim(EdCodClp.Text) <> '' then
+      Text := Text + ' and CmpR14.CodClp = ' + QuotedStr(EdCodClp.Text)+_BR;
+    if Trim(EdCodCat.Text) <> '' then
+      Text := Text + ' and EstPro.CodCat = ' + QuotedStr(EdCodCat.Text)+_BR;
+    if Trim(EdCodTip.Text) <> '' then
+      Text := Text + ' and EstPro.CodTip = ' + QuotedStr(EdCodTip.Text)+_BR;
+    if Trim(EdCodMrc.Text) <> '' then
+      Text := Text + ' and EstPro.CodMrc = ' + QuotedStr(EdCodMrc.Text)+_BR;
+
+    //       Text := Text + ' and CmpR14.FlgEnc = '+ QuotedStr('Sim');
+    //       clipboard.astext:=text;
+
+    if DebugHook > 0 then
+      clipboard.AsText := clipboard.AsText + #10#13+#10#13+'--Select 0002'+#10#13+PedLb2.SQL.Text;
+    Open;
+  end;
+
+  with quSQL, SQL do
+  begin
+
+    Close;
+    Text := ' Delete From CmpR14 Where CmpR14.SeqArq = ' + QuotedStr(SeqArq);
+    ExecSQL;
+
+  end;
+
+  grLb2.FullExpand;
+
+  grLb2.SetFocus;
+
+end;
+
+procedure TfmCmpR14.FormShow(Sender: TObject);
+begin
+  inherited;
+
+  EdCodClp.Text := '1';
+
+  EdNomClp.Text := 'ACABADO';
+
+  if GCodVen_Id > 0 then
+  begin
+
+    EdNomVen.Text := GNomVen_Id;
+    EdCodVen.Text := IntToStr(GCodVen_Id);
+
+    if GGus_Id <> 1 then
+    begin
+
+      bPsqVen.Enabled := False;
+
+      EdCodVen.Enabled := False;
+
+      EdCodVen.Font.Style := [fsBold];
+
+      grLb2.ColumnByFieldName('VCSLB2').Visible := False;
+      grLb2.ColumnByFieldName('TOTREN').Visible := False;
+      grLb2.ColumnByFieldName('FLGTAB').Visible := False;
+      grLb2.ColumnByFieldName('TOTLB2').Visible := False;
+      grLb2.ColumnByFieldName('TOTCST').Visible := False;
+
+    end;
+  end;
+
+  EdCodCli.SetFocus;
+
+end;
+
+procedure TfmCmpR14.bImprimeClick(Sender: TObject);
+begin
+  inherited;
+
+  ActiveControl := nil;
+
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Clear;
+
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add(' ');
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add('Cliente : ' + EdCodCli.Text + ' - ' + EdNomCli.Text);
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add('Classificação : ' + EdCodClp.Text + ' - ' + EdNomClp.Text);
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add('Grupo : ' + EdCodGru.Text + ' - ' + EdNomGru.Text);
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add('SubGrupo : ' + EdCodSub.Text + ' - ' + EdNomSub.Text);
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add('Item : ' + EdCodPro.Text + ' - ' + EdNomPro.Text);
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add('Faturados no Periodo de : ' + EdDteFat1.Text + ' a ' + EdDteFat2.Text);
+  dxComponentPrinterLink1.PrinterPage.PageHeader.LeftTitle.Add(' ');
+
+  dxComponentPrinterLink1.Preview;
+
+end;
+
+procedure TfmCmpR14.grLb2ReloadGroupList(Sender: TObject);
+begin
+  inherited;
+  (Sender as TdxDBGrid).FullExpand;
+end;
+
+procedure TfmCmpR14.HTMLClick(Sender: TObject);
+begin
+  inherited;
+  Save('htm', 'HTML File (*.htm; *.html)|*.htm', 'Perfil de Consumo.htm', grLb2.SaveToHTML);
+end;
+
+procedure TfmCmpR14.ExcelClick(Sender: TObject);
+begin
+  inherited;
+  Save('xls', 'Microsoft Excel 4.0 Worksheet (*.xls)|*.xls', 'Perfil de Consumo.xls', grLb2.SaveToXLS);
+end;
+
+procedure TfmCmpR14.XMLClick(Sender: TObject);
+begin
+  inherited;
+  Save('xml', 'XML File (*.xml)|*.xml', 'Perfil de Consumo.xml', grLb2.SaveToXML);
+end;
+
+procedure TfmCmpR14.bPsqCliClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    fmAuxIni.TipoPesq := 'C';
+
+    fmAuxIni.sCodVen_Id := GCodVen_Id;
+
+    fmAuxIni.sGUs_Id := GGUs_Id;
+
+    fmAuxIni.sCodAtd_Id := GCodAtd_Id;
+
+    fmAuxIni.ShowModal;
+
+    if fmAuxIni.CodCli > 0 then
+    begin
+
+      EdNomCli.Text := fmAuxIni.NomCli;
+      EdCodCli.Text := IntToStr(fmAuxIni.CodCli);
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodCli.Text) <> '' then
+  begin
+
+    if EdCodVen.Enabled then
+      EdCodVen.SetFocus
+    else
+      EdCodCat.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodCliExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodCli.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomCli From FinCli ' +
+        ' Where CodCli = ''' + EdCodCli.Text + '''';
+      Open;
+
+      EdNomCli.Text := FieldByName('NomCli').AsString;
+
+    end;
+
+  end
+  else
+    EdNomCli.Text := '';
+end;
+
+procedure TfmCmpR14.EdCodCliKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if not (key in ['0'..'9']) then
+    key := #0;
+end;
+
+procedure TfmCmpR14.BbPsqClpClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    if Trim(EdCodCat.Text) <> '' then
+      fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+    if Trim(EdCodTip.Text) <> '' then
+      fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+    if Trim(EdCodMrc.Text) <> '' then
+      fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+
+    fmAuxIni.TipoPesq := 'Cls';
+
+    fmAuxIni.ShowModal;
+
+    if Trim(fmAuxIni.CodClp) <> '' then
+    begin
+
+      EdCodClp.Text := fmAuxIni.CodClp;
+      EdNomClp.Text := fmAuxIni.NomClp;
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodClp.Text) <> '' then
+    EdCodGru.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodClpExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodClp.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomClp From EstClp ' +
+        ' Where CodClp = ''' + EdCodClp.Text + '''';
+      Open;
+
+    end;
+
+    if Trim(quSQL.FieldbyName('NomClp').AsString) <> '' then
+      EdNomClp.Text := quSql.FieldByName('NomClp').AsString
+    else
+      fmsgErro('Classificação Informada não Encontrada.', EdCodClp);
+
+  end
+  else
+    EdNomClp.Text := '';
+end;
+
+procedure TfmCmpR14.BbPsqGruClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    if Trim(EdCodCat.Text) <> '' then
+      fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+    if Trim(EdCodTip.Text) <> '' then
+      fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+    if Trim(EdCodMrc.Text) <> '' then
+      fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+    if Trim(EdCodClp.Text) <> '' then
+      fmAuxIni.CodClp := EdCodClp.Text;
+
+    fmAuxIni.TipoPesq := 'G';
+
+    fmAuxIni.ShowModal;
+
+    if Trim(fmAuxIni.CodGru) <> '' then
+    begin
+
+      EdCodGru.Text := fmAuxIni.CodGru;
+      EdNomGru.Text := fmAuxIni.NomGru;
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodGru.Text) <> '' then
+    EdCodSub.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodGruExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodGru.Text) <> '' then
+  begin
+
+    EdCodGru.Text := FNumZeros(EdCodGru.Text, 3);
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomGru From EstGru ' +
+        ' Where CodGru = ''' + EdCodGru.Text + '''';
+      Open;
+
+    end;
+
+    if Trim(quSQL.FieldbyName('NomGru').AsString) <> '' then
+      EdNomGru.Text := quSql.FieldByName('NomGru').AsString
+    else
+      fmsgErro('Grupo Informado não Encontrado.', EdCodGru);
+
+  end
+  else
+    EdNomGru.Text := '';
+end;
+
+procedure TfmCmpR14.BbPsqSubClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    if Trim(EdCodCat.Text) <> '' then
+      fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+    if Trim(EdCodTip.Text) <> '' then
+      fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+    if Trim(EdCodMrc.Text) <> '' then
+      fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+    if Trim(EdCodClp.Text) <> '' then
+      fmAuxIni.CodClp := EdCodClp.Text;
+    if Trim(EdCodGru.Text) <> '' then
+      fmAuxIni.CodGru := EdCodGru.Text;
+
+    fmAuxIni.TipoPesq := 'S';
+
+    fmAuxIni.ShowModal;
+
+    if Trim(fmAuxIni.CodSub) <> '' then
+    begin
+
+      EdCodGru.Text := fmAuxIni.CodGru;
+      EdNomGru.Text := fmAuxIni.NomGru;
+      EdCodSub.Text := fmAuxIni.CodSub;
+      EdNomSub.Text := fmAuxIni.NomSub;
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodSub.Text) <> '' then
+    EdCodPro.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodSubExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodSub.Text) <> '' then
+  begin
+
+    EdCodSub.Text := FNumZeros(EdCodSub.Text, 4);
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomSub From EstSub ' +
+        ' Where CodGru = ''' + EdCodGru.Text + '''' +
+        '   and CodSub = ''' + EdCodSub.Text + '''';
+      Open;
+
+    end;
+
+    if Trim(quSQL.FieldbyName('NomSub').AsString) <> '' then
+      EdNomSub.Text := quSql.FieldByName('NomSub').AsString
+    else
+      fmsgErro('SubGrupo Informado não Encontrado.', EdCodSub);
+
+  end
+  else
+    EdNomSub.Text := '';
+end;
+
+procedure TfmCmpR14.BbPsqProClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    if Trim(EdCodCat.Text) <> '' then
+      fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+    if Trim(EdCodTip.Text) <> '' then
+      fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+    if Trim(EdCodMrc.Text) <> '' then
+      fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+    if Trim(EdCodClp.Text) <> '' then
+      fmAuxIni.CodClp := EdCodClp.Text;
+    if Trim(EdCodGru.Text) <> '' then
+      fmAuxIni.CodGru := EdCodGru.Text;
+    if Trim(EdCodSub.Text) <> '' then
+      fmAuxIni.CodGru := EdCodSub.Text;
+
+    fmAuxIni.TipoPesq := 'I';
+
+    fmAuxIni.ShowModal;
+
+    if Trim(fmAuxIni.CodPro) <> '' then
+    begin
+
+      EdCodClp.Text := fmAuxIni.CodClp;
+      EdNomClp.Text := fmAuxIni.NomClp;
+      EdCodGru.Text := fmAuxIni.CodGru;
+      EdNomGru.Text := fmAuxIni.NomGru;
+      EdCodSub.Text := fmAuxIni.CodSub;
+      EdNomSub.Text := fmAuxIni.NomSub;
+      EdCodPro.Text := fmAuxIni.CodPro;
+      EdNomPro.Text := fmAuxIni.DscPro;
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodPro.Text) <> '' then
+    bPesquisa.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodProExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodPro.Text) <> '' then
+  begin
+
+    EdCodPro.Text := FNumStrZero(EdCodPro.Text);
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select DscPro From EstPro ' +
+        ' Where CodClp = :CodClp' +
+        '   and CodGru = :CodGru' +
+        '   and CodSub = :CodSub' +
+        '   and CodPro = :CodPro';
+
+      with Params do
+      begin
+
+        Params[0].AsString := EdCodClp.Text;
+        Params[1].AsString := EdCodGru.Text;
+        Params[2].AsString := EdCodSub.Text;
+        Params[3].AsString := EdCodPro.Text;
+
+      end;
+
+      Open;
+
+    end;
+
+    if Trim(quSQL.FieldbyName('DscPro').AsString) <> '' then
+      EdNomPro.Text := quSql.FieldByName('DscPro').AsString
+    else
+      fmsgErro('Item Informado não Encontrado.', EdCodPro);
+
+  end
+  else
+    EdNomPro.Text := '';
+end;
+
+procedure TfmCmpR14.bPsqTipClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    if Trim(EdCodCat.Text) <> '' then
+      fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+
+    fmAuxIni.TipoPesq := 'Tipo';
+
+    fmAuxIni.ShowModal;
+
+    if fmAuxIni.CodTip > 0 then
+    begin
+
+      EdNomTip.Text := fmAuxIni.NomTip;
+      EdCodTip.Text := IntToStr(fmAuxIni.CodTip);
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodTip.Text) <> '' then
+    EdCodMrc.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodTipExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodTip.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomTip From EstTip Where CodTip = ''' + EdCodTip.Text + '''';
+      Open;
+
+      EdNomTip.Text := FieldByName('NomTip').AsString
+
+    end;
+
+  end
+  else
+    EdNomTip.Text := '';
+end;
+
+procedure TfmCmpR14.bPsqCatClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    fmAuxIni.TipoPesq := 'Categoria';
+
+    fmAuxIni.ShowModal;
+
+    if fmAuxIni.CodCat > 0 then
+    begin
+
+      EdNomCat.Text := fmAuxIni.NomCat;
+      EdCodCat.Text := IntToStr(fmAuxIni.CodCat);
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodCat.Text) <> '' then
+    EdCodTip.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodCatExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodCat.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomCat From EstCat Where CodCat = ''' + EdCodCat.Text + '''';
+      Open;
+
+      EdNomCat.Text := FieldByName('NomCat').AsString;
+
+    end;
+
+  end
+  else
+    EdNomCat.Text := '';
+end;
+
+procedure TfmCmpR14.bPsqMrcClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    if Trim(EdCodCat.Text) <> '' then
+      fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+    if Trim(EdCodTip.Text) <> '' then
+      fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+
+    fmAuxIni.TipoPesq := 'Marca';
+
+    fmAuxIni.ShowModal;
+
+    if fmAuxIni.CodMrc > 0 then
+    begin
+
+      EdNomMrc.Text := fmAuxIni.NomMrc;
+      EdCodMrc.Text := IntToStr(fmAuxIni.CodMrc);
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodMrc.Text) <> '' then
+    EdCodClp.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodMrcExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodMrc.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select NomMrc From EstMrc Where CodMrc = ''' + EdCodMrc.Text + '''';
+      Open;
+
+      EdNomMrc.Text := FieldByName('NomMrc').AsString;
+
+    end;
+
+  end
+  else
+    EdNomMrc.Text := '';
+end;
+
+procedure TfmCmpR14.bPsqVenClick(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmAuxIni := TfmAuxIni.Create(Self);
+
+    fmAuxIni.TipoPesq := 'V';
+
+    fmAuxIni.ShowModal;
+
+    if fmAuxIni.CodVen > 0 then
+    begin
+
+      EdNomVen.Text := fmAuxIni.NomVen;
+      EdCodVen.Text := IntToStr(fmAuxIni.CodVen);
+
+    end;
+
+  finally
+
+    FreeAndNil(fmAuxIni);
+
+  end;
+
+  if Trim(EdCodVen.Text) <> '' then
+    EdCodCat.SetFocus;
+
+end;
+
+procedure TfmCmpR14.EdCodCatKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      fmAuxIni.TipoPesq := 'Categoria';
+
+      fmAuxIni.ShowModal;
+
+      if fmAuxIni.CodCat > 0 then
+      begin
+
+        EdNomCat.Text := fmAuxIni.NomCat;
+        EdCodCat.Text := IntToStr(fmAuxIni.CodCat);
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodCat.Text) <> '' then
+      EdCodTip.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodTipKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+
+      fmAuxIni.TipoPesq := 'Tipo';
+
+      fmAuxIni.ShowModal;
+
+      if fmAuxIni.CodTip > 0 then
+      begin
+
+        EdNomTip.Text := fmAuxIni.NomTip;
+        EdCodTip.Text := IntToStr(fmAuxIni.CodTip);
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodTip.Text) <> '' then
+      EdCodMrc.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodMrcKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+
+      fmAuxIni.TipoPesq := 'Marca';
+
+      fmAuxIni.ShowModal;
+
+      if fmAuxIni.CodMrc > 0 then
+      begin
+
+        EdNomMrc.Text := fmAuxIni.NomMrc;
+        EdCodMrc.Text := IntToStr(fmAuxIni.CodMrc);
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodMrc.Text) <> '' then
+      EdCodClp.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodClpKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmPsqClp := TfmPsqClp.Create(Self);
+
+      fmPsqClp.ShowModal;
+
+      if Trim(fmPsqClp.CodClp) <> '' then
+      begin
+
+        EdCodClp.Text := fmPsqClp.CodClp;
+        EdNomClp.Text := fmPsqClp.NomClp;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmPsqClp);
+
+    end;
+
+    if Trim(EdCodClp.Text) <> '' then
+      EdCodGru.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodGruKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      fmAuxIni.CodClp := EdCodClp.Text;
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+      if Trim(EdCodMrc.Text) <> '' then
+        fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+
+      fmAuxIni.TipoPesq := 'G';
+
+      fmAuxIni.ShowModal;
+
+      if Trim(fmAuxIni.CodGru) <> '' then
+      begin
+
+        EdCodGru.Text := fmAuxIni.CodGru;
+        EdNomGru.Text := fmAuxIni.NomGru;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodGru.Text) <> '' then
+      EdCodSub.SetFocus;
+
+  end;
+
+  if key = 113 then
+  begin {F2 - Busca Inteligente}
+
+    try
+
+      fmAuxPsq := TfmAuxPsq.Create(Self);
+
+      fmAuxPsq.CodClp := EdCodClp.Text;
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxPsq.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxPsq.CodTip := StrToInt(EdCodTip.Text);
+      if Trim(EdCodMrc.Text) <> '' then
+        fmAuxPsq.CodMrc := StrToInt(EdCodMrc.Text);
+
+      fmAuxPsq.TipoPesq := 'G';
+
+      fmAuxPsq.ShowModal;
+
+      if Trim(fmAuxPsq.CodGru) <> '' then
+      begin
+
+        EdCodGru.Text := fmAuxPsq.CodGru;
+        EdNomGru.Text := fmAuxPsq.NomGru;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxPsq);
+
+    end;
+
+    if Trim(EdCodGru.Text) <> '' then
+      EdCodSub.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodSubKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      fmAuxIni.CodClp := EdCodClp.Text;
+      fmAuxIni.CodGru := EdCodGru.Text;
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+      if Trim(EdCodMrc.Text) <> '' then
+        fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+
+      fmAuxIni.TipoPesq := 'S';
+
+      fmAuxIni.ShowModal;
+
+      if Trim(fmAuxIni.CodGru) <> '' then
+      begin
+
+        EdCodGru.Text := fmAuxIni.CodGru;
+        EdNomGru.Text := fmAuxIni.NomGru;
+        EdCodSub.Text := fmAuxIni.CodSub;
+        EdNomSub.Text := fmAuxIni.NomSub;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodSub.Text) <> '' then
+      EdCodPro.SetFocus;
+
+  end;
+
+  if key = 113 then
+  begin {F2 - Busca Inteligente}
+
+    try
+
+      fmAuxPsq := TfmAuxPsq.Create(Self);
+
+      fmAuxPsq.CodClp := EdCodClp.Text;
+      fmAuxPsq.CodGru := EdCodGru.Text;
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxPsq.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxPsq.CodTip := StrToInt(EdCodTip.Text);
+      if Trim(EdCodMrc.Text) <> '' then
+        fmAuxPsq.CodMrc := StrToInt(EdCodMrc.Text);
+
+      fmAuxPsq.TipoPesq := 'S';
+
+      fmAuxPsq.ShowModal;
+
+      if Trim(fmAuxPsq.CodGru) <> '' then
+      begin
+
+        EdCodGru.Text := fmAuxPsq.CodGru;
+        EdNomGru.Text := fmAuxPsq.NomGru;
+        EdCodSub.Text := fmAuxPsq.CodSub;
+        EdNomSub.Text := fmAuxPsq.NomSub;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxPsq);
+
+    end;
+
+    if Trim(EdCodSub.Text) <> '' then
+      EdCodPro.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodProKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      fmAuxIni.CodClp := EdCodClp.Text;
+      fmAuxIni.CodGru := EdCodGru.Text;
+      fmAuxIni.CodSub := EdCodSub.Text;
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxIni.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxIni.CodTip := StrToInt(EdCodTip.Text);
+      if Trim(EdCodMrc.Text) <> '' then
+        fmAuxIni.CodMrc := StrToInt(EdCodMrc.Text);
+
+      fmAuxIni.TipoPesq := 'I';
+
+      fmAuxIni.ShowModal;
+
+      if Trim(fmAuxIni.CodGru) <> '' then
+      begin
+
+        EdCodGru.Text := fmAuxIni.CodGru;
+        EdNomGru.Text := fmAuxIni.NomGru;
+        EdCodSub.Text := fmAuxIni.CodSub;
+        EdNomSub.Text := fmAuxIni.NomSub;
+        EdCodPro.Text := fmAuxIni.CodPro;
+        EdNomPro.Text := fmAuxIni.DscPro;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodPro.Text) <> '' then
+      EdDteFat1.SetFocus;
+
+  end;
+
+  if key = 113 then
+  begin {F2 - Busca Inteligente}
+
+    try
+
+      fmAuxPsq := TfmAuxPsq.Create(Self);
+
+      fmAuxPsq.CodClp := EdCodClp.Text;
+      fmAuxPsq.CodGru := EdCodGru.Text;
+      fmAuxPsq.CodSub := EdCodSub.Text;
+
+      if Trim(EdCodCat.Text) <> '' then
+        fmAuxPsq.CodCat := StrToInt(EdCodCat.Text);
+      if Trim(EdCodTip.Text) <> '' then
+        fmAuxPsq.CodTip := StrToInt(EdCodTip.Text);
+      if Trim(EdCodMrc.Text) <> '' then
+        fmAuxPsq.CodMrc := StrToInt(EdCodMrc.Text);
+
+      fmAuxPsq.TipoPesq := 'I';
+
+      fmAuxPsq.ShowModal;
+
+      if Trim(fmAuxPsq.CodGru) <> '' then
+      begin
+
+        EdCodGru.Text := fmAuxPsq.CodGru;
+        EdNomGru.Text := fmAuxPsq.NomGru;
+        EdCodSub.Text := fmAuxPsq.CodSub;
+        EdNomSub.Text := fmAuxPsq.NomSub;
+        EdCodPro.Text := fmAuxPsq.CodPro;
+        EdNomPro.Text := fmAuxPsq.DscPro;
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxPsq);
+
+    end;
+
+    if Trim(EdCodPro.Text) <> '' then
+      EdDteFat1.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodCliKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      fmAuxIni.TipoPesq := 'C';
+
+      fmAuxIni.sCodVen_Id := GCodVen_Id;
+
+      fmAuxIni.sGUs_Id := GGUs_Id;
+
+      fmAuxIni.sCodAtd_Id := GCodAtd_Id;
+
+      fmAuxIni.ShowModal;
+
+      if fmAuxIni.CodCli > 0 then
+      begin
+
+        EdNomCli.Text := fmAuxIni.NomCli;
+        EdCodCli.Text := IntToStr(fmAuxIni.CodCli);
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    EdCodCli.SetFocus;
+
+  end;
+
+  if key = 113 then
+  begin {F2 - Inteligente/Nome}
+
+    try
+
+      fmAuxPsq := TfmAuxPsq.Create(Self);
+
+      fmAuxPsq.TipoPesq := 'C';
+
+      fmAuxPsq.sCodVen_Id := GCodVen_Id;
+
+      fmAuxPsq.sGUs_Id := GGUs_Id;
+
+      fmAuxPsq.sCodAtd_Id := GCodAtd_Id;
+
+      fmAuxPsq.ShowModal;
+
+      if fmAuxPsq.CodCli > 0 then
+      begin
+
+        EdNomCli.Text := fmAuxPsq.NomCli;
+        EdCodCli.Text := IntToStr(fmAuxPsq.CodCli);
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxPsq);
+
+    end;
+
+    EdCodCli.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodVenKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmAuxIni := TfmAuxIni.Create(Self);
+
+      fmAuxIni.TipoPesq := 'V';
+
+      fmAuxIni.ShowModal;
+
+      if fmAuxIni.CodVen > 0 then
+      begin
+
+        EdNomVen.Text := fmAuxIni.NomVen;
+        EdCodVen.Text := IntToStr(fmAuxIni.CodVen);
+
+      end;
+
+    finally
+
+      FreeAndNil(fmAuxIni);
+
+    end;
+
+    if Trim(EdCodVen.Text) <> '' then
+      EdCodCat.SetFocus;
+
+  end;
+end;
+
+procedure TfmCmpR14.EdCodVenExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(EdCodVen.Text) <> '' then
+  begin
+
+    with quSql, SQL do
+    begin
+
+      Close;
+      Text := ' Select ApeVen From FinVen Where CodVen = ''' + EdCodVen.Text + '''';
+      Open;
+
+      EdNomVen.Text := FieldByName('ApeVen').AsString;
+
+    end;
+
+  end
+  else
+    EdNomVen.Text := '';
+end;
+
+procedure TfmCmpR14.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+
+  with quSQL, SQL do
+  begin
+
+    Close;
+    Text := ' Delete From CmpR14 Where CmpR14.SeqArq = ''' + SeqArq + '''';
+    ExecSQL;
+
+  end;
+
+  Action := CaFree;
+
+end;
+
+procedure TfmCmpR14.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  fmCmpR14 := nil;
+end;
+
+procedure TfmCmpR14.Colunas1Click(Sender: TObject);
+begin
+  inherited;
+
+  try
+
+    fmManCol := TfmManCol.Create(Self);
+
+    fmManCol.Synchronize(fmCmpR14.grLb2);
+
+    fmManCol.ShowModal;
+
+  finally
+
+    FreeAndNil(fmManCol);
+
+  end;
+end;
+
+procedure TfmCmpR14.btnPesRefClick(Sender: TObject);
+begin
+  inherited;
+
+    try
+
+      fmPsqRef := TfmPsqRef.Create(Self);
+
+      fmPsqRef.ShowModal;
+
+      if Trim(fmPsqRef.RefPro) <> '' then
+      begin
+        edPesRef.Text := fmPsqRef.RefPro;
+      end;
+
+    finally
+
+      FreeAndNil(fmPsqRef);
+
+    end;end;
+
+procedure TfmCmpR14.edPesRefExit(Sender: TObject);
+begin
+  if Trim(edPesRef.Text) <> '' then
+  begin
+
+    quSql.Close;
+    quSql.SQL.Text := ' Select * from EstPro where refpro like '+QuotedStr('%'+Trim(edPesRef.Text)+'%');
+    quSql.Open;
+
+  end
+  else
+    edPesRef.Text := '';
+
+end;
+
+procedure TfmCmpR14.edPesRefKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  if key = 112 then
+  begin {F1 - Iniciais}
+
+    try
+
+      fmPsqRef:= TfmPsqRef.Create(Self);
+
+      fmPsqRef.ShowModal;
+
+      if Trim(fmPsqRef.RefPro) <> '' then
+      begin
+        edPesRef.Text := fmPsqRef.RefPro;
+      end;
+
+    finally
+
+      FreeAndNil(fmPsqRef);
+
+    end;
+  end;
+end;
+
+end.
+
+(*
+with quSQL, SQL do begin
+
+         Close;
+         if fmManGDB.BuscaSimples('FATPAR', 'FLGCOT', '1=1', '') = 'Sim' then
+            Text := ' Insert Into CmpR14(SeqArq,CodCli,CodVen,NumRes,FlgTab,DteRes,NroNfs,DteFat,DteSda,DteEnt,CodClp,CodGru,CodSub,CodPro,UltQts,TotCst,TotRen,VcsLb2,TotLb2,VlqLb2,SitLib,ModPfa)' +
+               ' Select ' + QuotedStr(SeqArq) + ',' +
+               ' FATPED.CodCli, ' +
+               ' FATPED.CodVen, ' +
+               ' FATPED.NumRes, ' +
+               ' (Select first 1 a.FlgTab from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as FLGTAB, ' +
+               ' FATPED.DteRes, ' +
+               ' FATPED.NroNfs, ' +
+               ' FATPED.DteFat, ' +
+               ' FATPED.DteSda, ' +
+               ' FATPED.DteEnt, ' +
+               ' FATPE2.CodClp, ' +
+               ' FATPE2.CodGru, ' +
+               ' FATPE2.CodSub, ' +
+               ' FATPE2.CodPro, ' +
+               ' FATPE2.qtppe2 as  UltQts, ' +
+               ' (Select first 1 a.VcsLB2*a.UltQTS from pedLB2 a ' +
+               ' where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres order by seqlib desc)as VCSRE2, ' +
+               ' (Select first 1 a.TotRen from pedLB2 a ' +
+               ' where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres and codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp order by seqlib desc)as TotRen, ' +
+               ' (Select first 1 a.VcsLB2 from pedLB2 a ' +
+               ' where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres order by seqlib desc)as VCSRE2, ' +
+               '        Round((Select first 1 a.VLQLB2*a.UltQTS from pedLB2 a ' +
+               ' where a.CodEmp = FATPED.CodEmp and  a.DteRes = FATPED.DteRes  and  a.NumRes = FATPED.NumRes and a.codgru = FATPE2.codgru and a.codsub = fatpe2.codsub and a.codpro =fatpe2.codpro and codclp = ' + 'FATPE2.codclp order by seqlib desc),4)as TotLb2,' +
+               '  Round((Select first 1 VLQLB2 from pedLB2 a ' +
+               ' where a.CodEmp = FATPED.CodEmp and  a.DteRes = FATPED.DteRes  and  a.NumRes = FATPED.NumRes and a.codgru = FATPE2.codgru and a.codsub = fatpe2.codsub and a.codpro =fatpe2.codpro and codclp = FATPE2.codclp order by seqlib desc),4) ' + 'as VlqRe2, ' +
+               {
+         Campos alterado pelo Thiago a Pedido da Katya 25/05/2011
+                        '  (Select (a.TotCst*fatped.Valtmo) from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as TotCst, '+
+                        '  (Select a.TotRen from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as TotRen, '+
+                        '  (Select (a.VcsRe2*FatPED.VALTMO) from pedre2 a where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = '+'fatped.dteres and a.numres = fatped.numres)as VCSRE2, '+
+                        ' (FATPE2.TotGe2) as TotLb2, '+
+                        '  Round((VlqPe2 - VdrPe2)*((FATPE2.IPIPE2/100)+1),4) as VlqRe2, '+
+
+         }
+            ' FATPED.SitFAT, ' +
+               ' FATPED.ModPfa ' +
+               ' From FATPE2,FATPED ' +
+               ' Where FATPE2.CodEmp = FATPED.CodEmp   and ' +
+               ' FATPE2.DteRes = FATPED.DteRes   and ' +
+               ' FATPE2.NumRes = FATPED.NumRes   and ' +
+               ' FATPE2.SeqLib = FATPED.SeqLib ' + sFiltro
+         else
+            Text := ' Insert Into CmpR14(SeqArq,CodCli,CodVen,NumRes,FlgTab,DteRes,NroNfs,DteFat,DteSda,DteEnt,CodClp,CodGru,CodSub,CodPro,UltQts,TotCst,TotRen,VcsLb2,TotLb2,VlqLb2,SitLib,ModPfa)' +
+               ' Select ' + QuotedStr(SeqArq) + ',' +
+               ' FATPED.CodCli, ' +
+               ' FATPED.CodVen, ' +
+               ' FATPED.NumRes, ' +
+               ' (Select first 1 a.FlgTab from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as FLGTAB, ' +
+               ' FATPED.DteRes, ' +
+               ' FATPED.NroNfs, ' +
+               ' FATPED.DteFat, ' +
+               ' FATPED.DteSda, ' +
+               ' FATPED.DteEnt, ' +
+               ' FATPE2.CodClp, ' +
+               ' FATPE2.CodGru, ' +
+               ' FATPE2.CodSub, ' +
+               ' FATPE2.CodPro, ' +
+               ' FATPE2.qtppe2 as  UltQts, ' +
+               ' (Select first 1 a.VcsLB2*a.UltQTS from pedLB2 a ' +
+               ' where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres order by seqlib desc)as VCSRE2, ' +
+               ' (Select first 1 a.TotRen from pedLB2 a ' +
+               ' where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres and codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp order by seqlib desc)as TotRen, ' +
+               ' (Select first 1 a.VcsLB2 from pedLB2 a ' +
+               ' where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres order by seqlib desc)as VCSRE2, ' +
+               '        Round((Select first 1 a.VLQLB2*a.UltQTS from pedLB2 a ' +
+               ' where a.CodEmp = FATPED.CodEmp and  a.DteRes = FATPED.DteRes  and  a.NumRes = FATPED.NumRes and a.codgru = FATPE2.codgru and a.codsub = fatpe2.codsub and a.codpro =fatpe2.codpro and codclp = ' + 'FATPE2.codclp order by seqlib desc),4)as TotLb2,' +
+               '  Round((Select first 1 VLQLB2 from pedLB2 a ' +
+               ' where a.CodEmp = FATPED.CodEmp and  a.DteRes = FATPED.DteRes  and  a.NumRes = FATPED.NumRes and a.codgru = FATPE2.codgru and a.codsub = fatpe2.codsub and a.codpro =fatpe2.codpro and codclp = FATPE2.codclp order by seqlib desc),4) ' + 'as VlqRe2, ' +
+               {
+         Campos alterado pelo Thiago a Pedido da Katya 25/05/2011
+                        '  (Select (a.TotCst) from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as TotCst, '+
+                        '  (Select a.TotRen from pedres a where a.codemp = fatped.codemp and a.dteres = fatped.dteres and a.numres = fatped.numres)as TotRen, '+
+                        '  (Select (a.VcsRe2) from pedre2 a where codgru = FATPE2.codgru and codsub = FATPE2.codsub and codpro = FATPE2.codpro and codclp = FATPE2.codclp and a.codemp = fatped.codemp and a.dteres = '+'fatped.dteres and a.numres = fatped.numres)as VCSRE2, '+
+                        ' (FATPE2.TotGe2) as TotLb2, '+
+                        '  Round((VlqPe2 - VdrPe2)*((FATPE2.IPIPE2/100)+1),4) as VlqRe2, '+
+
+         }
+            ' FATPED.SitFAT, ' +
+               ' FATPED.ModPfa ' +
+               ' From FATPE2,FATPED ' +
+               ' Where FATPE2.CodEmp = FATPED.CodEmp   and ' +
+               ' FATPE2.DteRes = FATPED.DteRes   and ' +
+               ' FATPE2.NumRes = FATPED.NumRes   and ' +
+               ' FATPE2.SeqLib = FATPED.SeqLib ' + sFiltro;
+
+         ExecSQL;
+
+      end;
+*)

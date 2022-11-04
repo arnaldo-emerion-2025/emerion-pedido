@@ -1,0 +1,1 @@
+externo##192.168.5.100:/rede/_wgdad/interbase/portal.fdb @@Servidor Remoto ***192.168.5.100:/opt/firebird/security.fdb***

@@ -1,0 +1,751 @@
+unit ManPe4;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  DBTables, Db, Wwdatsrc, Wwquery, DBFlEdit, StdCtrls, Mask, DBCtrls,
+  hEdits, Grids, Wwdbigrd, Wwdbgrid, hGrid, hNavigator, ExtCtrls, Buttons,
+  wwdblook, dxfPictureButton, dxCntner, dxEditor, dxExEdtr, dxDBEdtr, dxDBELib,
+  dxEdLib, AlignEdit, FShowpadrao, dxDBColorDateEdit, dxDBColorEdit,
+  dxDBColorCurrencyEdit, dxDBColorMemo;
+
+type
+  TfmManPe4 = class(TfmShowPadrao)
+    PaintBox: TPaintBox;
+    Bevel1: TBevel;
+    Label10: TLabel;
+    Label8: TLabel;
+    quSql1: TwwQuery;
+    quSql2: TwwQuery;
+    bretornar: TBitBtn;
+    bcontinuar: TBitBtn;
+    EdOb1fat: TdxDBColorMemo;
+    EdOb2Fat: TdxDBColorMemo;
+    EdOb3Fat: TdxDBColorMemo;
+    EdOb4fat: TdxDBColorMemo;
+    EdOB5Fat: TdxDBColorMemo;
+    edOb6Fat: TdxDBColorMemo;
+    edOb7fat: TdxDBColorMemo;
+    EdOb8Fat: TdxDBColorMemo;
+    procedure FormShow(Sender: TObject);
+    procedure bContinuarClick(Sender: TObject);
+    procedure bRetornarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure PaintBoxPaint(Sender: TObject);
+    procedure EdPraPe3KeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    {Private declarations}
+  public
+    {Public declarations}
+  end;
+
+var
+  fmManPe4: TfmManPe4;
+
+implementation
+
+uses dxDemoUtils, BbMensag, Bbgeral, Bbfuncao, ManGDB, ManPed, ManPe3;
+
+{$R *.DFM}
+
+procedure TfmManPe4.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  inherited;
+
+  if key = 27 then bRetornar.OnClick(Sender);
+
+  if key = 123 then bContinuar.OnClick(Sender);
+
+end;
+
+procedure TfmManPe4.FormShow(Sender: TObject);
+var
+  BasIcm : real;
+  TotIcm : real;
+  DscTxf : string;
+  ObsRes,NroSuf : string;
+  SeqLin,SeqEnc : Integer;
+  ObsFat,Ob1Fat,Ob2Fat,Ob3Fat,Ob4Fat,Ob5Fat,Ob6Fat,Ob7Fat,Ob8Fat : string;
+begin
+  inherited;
+
+  fmManPed.PedRes.Edit;
+
+  SeqLin := 1;
+
+  if (Trim(fmManPed.PedResOb1Fat.Value) = '') or (fmManPed.sObser = 'S') then begin
+
+     Ob1Fat := '';
+     Ob2Fat := '';
+     Ob3Fat := '';
+     Ob4Fat := '';
+     Ob5Fat := '';
+     Ob6Fat := '';
+     Ob7Fat := '';
+     Ob8Fat := '';
+
+     with quSQL1,SQL do begin
+
+          Close;
+          Text := ' Select Distinct PedRe2.CodTxf'+
+                  ' From PedRe2'+
+                  ' Where PedRe2.CodEmp = :CodEmp'+
+                  '   and PedRe2.DteRes = :DteRes'+
+                  '   and PedRe2.NumRes = :NumRes';
+
+          with Params do begin
+
+               Params[0].AsInteger  := fmManPed.PedResCodEmp.Value;
+               Params[1].AsDateTime := fmManPed.PedResDteRes.Value;
+               Params[2].AsInteger  := fmManPed.PedResNumRes.Value;
+
+          end;
+
+          Open;
+
+     end;
+
+     if Trim( quSQL1.FieldbyName('CodTxf').AsString ) <> '' then begin
+
+        while not quSQL1.EOF do begin
+
+              with quSQL2,SQL do begin
+
+                   Text := ' Select EstTxf.DscTxf'+
+                           ' From EstTxf'+
+                           ' Where EstTxf.CodTxf = :CodTxf';
+
+                   with Params do begin
+
+                        Params[0].AsString := quSQL1.FieldbyName('CodTxf').AsString;
+
+                   end;
+
+                   Open;
+
+                   DscTxf := Trim( FieldbyName('DscTxf').AsString );
+
+              end;
+
+              SeqEnc := 1;
+                 
+              while SeqEnc = 1 do begin
+
+                    if pos(' ',DscTxf) > 0 then
+                       ObsFat := copy(DscTxf,1,(pos(' ',DscTxf)-1))
+                    else
+                       ObsFat := DscTxf;
+
+                    if SeqLin = 1 then begin
+
+                       if (2000 - Length(Ob1Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob1Fat) = '' then
+                             Ob1Fat := ObsFat
+                          else
+                             Ob1Fat := Ob1Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 2 then begin
+
+                       if (2000 - Length(Ob2Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob2Fat) = '' then
+                             Ob2Fat := ObsFat
+                          else
+                             Ob2Fat := Ob2Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 3 then begin
+
+                       if (2000 - Length(Ob3Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob3Fat) = '' then
+                             Ob3Fat := ObsFat
+                          else
+                             Ob3Fat := Ob3Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 4 then begin
+
+                       if (2000 - Length(Ob4Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob4Fat) = '' then
+                             Ob4Fat := ObsFat
+                          else
+                             Ob4Fat := Ob4Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 5 then begin
+
+                       if (2000 - Length(Ob5Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob5Fat) = '' then
+                             Ob5Fat := ObsFat
+                          else
+                             Ob5Fat := Ob5Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 6 then begin
+
+                       if (2000 - Length(Ob6Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob6Fat) = '' then
+                             Ob6Fat := ObsFat
+                          else
+                             Ob6Fat := Ob6Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 7 then begin
+
+                       if (2000 - Length(Ob7Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob7Fat) = '' then
+                             Ob7Fat := ObsFat
+                          else
+                             Ob7Fat := Ob7Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if SeqLin = 8 then begin
+
+                       if (2000 - Length(Ob8Fat)) < (Length(ObsFat) + 1) then
+                          Inc(SeqLin)
+                       else
+                          begin
+
+                          if Trim(Ob8Fat) = '' then
+                             Ob8Fat := ObsFat
+                          else
+                             Ob8Fat := Ob8Fat+ ' ' +ObsFat;
+
+                       end;
+                    end;
+
+                    if pos(' ',DscTxf) > 0 then
+                       DscTxf := copy(DscTxf,(pos(' ',DscTxf)+ 1),(Length(DscTxf) - pos(' ',DscTxf)))
+                    else
+                       SeqEnc := 0;
+
+              end;
+
+              quSQL1.Next;
+
+        end;
+     end;
+
+     with quSQL1,SQL do begin
+
+          Close;
+          Text := ' Select NroSuf From FinCli Where FinCli.CodCli = '+ QuotedStr(IntToStr(fmManPed.PedResCodCli.Value));
+          Open;
+
+          NroSuf := FieldbyName('NroSuf').AsString;
+
+     end;
+
+     ObsRes := fObsFatura(NroSuf,fmManPed.PedResTxfIpi.Value,fmManPed.PedResTxfIcm.Value,1);
+     
+     if Trim( ObsRes ) <> '' then begin
+
+        DscTxf := ObsRes;
+
+        SeqEnc := 1;
+        
+        while SeqEnc = 1 do begin
+
+              if pos(' ',DscTxf) > 0 then
+                 ObsFat := copy(DscTxf,1,(pos(' ',DscTxf)-1))
+              else
+                 ObsFat := DscTxf;
+
+              if SeqLin = 1 then begin
+
+                 if (2000 - Length(Ob1Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob1Fat) = '' then
+                       Ob1Fat := ObsFat
+                    else
+                       Ob1Fat := Ob1Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 2 then begin
+
+                 if (2000 - Length(Ob2Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob2Fat) = '' then
+                       Ob2Fat := ObsFat
+                    else
+                       Ob2Fat := Ob2Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 3 then begin
+
+                 if (2000 - Length(Ob3Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob3Fat) = '' then
+                       Ob3Fat := ObsFat
+                    else
+                       Ob3Fat := Ob3Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 4 then begin
+
+                 if (2000 - Length(Ob4Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob4Fat) = '' then
+                       Ob4Fat := ObsFat
+                    else
+                       Ob4Fat := Ob4Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 5 then begin
+
+                 if (2000 - Length(Ob5Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob5Fat) = '' then
+                       Ob5Fat := ObsFat
+                    else
+                       Ob5Fat := Ob5Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 6 then begin
+
+                 if (2000 - Length(Ob6Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob6Fat) = '' then
+                       Ob6Fat := ObsFat
+                    else
+                       Ob6Fat := Ob6Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 7 then begin
+
+                 if (2000 - Length(Ob7Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob7Fat) = '' then
+                       Ob7Fat := ObsFat
+                    else
+                       Ob7Fat := Ob7Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if SeqLin = 8 then begin
+
+                 if (2000 - Length(Ob8Fat)) < (Length(ObsFat) + 1) then
+                    Inc(SeqLin)
+                 else
+                    begin
+
+                    if Trim(Ob8Fat) = '' then
+                       Ob8Fat := ObsFat
+                    else
+                       Ob8Fat := Ob8Fat+ ' ' +ObsFat;
+
+                 end;
+              end;
+
+              if pos(' ',DscTxf) > 0 then
+                 DscTxf := copy(DscTxf,(pos(' ',DscTxf)+ 1),(Length(DscTxf) - pos(' ',DscTxf)))
+              else
+                 SeqEnc := 0;
+
+        end;
+     end;
+
+     BasIcm := 0;
+     TotIcm := 0;
+
+     with fmManPed.quSQL,SQL do begin
+
+          Close;
+          Text := ' Select Sum(PedRe2.BasIcm) as BasIcm,'+
+                  '        Sum(PedRe2.TotIcm) as TotIcm'+
+                  ' From PedRe2'+
+                  ' Where PedRe2.CodEmp = '+ QuotedStr(IntToStr(fmManPed.PedResCodEmp.Value)) +
+                  '   and PedRe2.DteRes = '+ QuotedStr(fDateToSQL(fmManPed.PedResDteRes.Value)) +
+                  '   and PedRe2.NumRes = '+ QuotedStr(IntToStr(fmManPed.PedResNumRes.Value)) +
+                  '   and PedRe2.CodCfo = '+ QuotedStr('5.403') ;
+          Open;
+
+          BasIcm := FieldbyName('BasIcm').AsFloat;
+          TotIcm := FieldbyName('TotIcm').AsFloat;
+
+     end;
+
+     with fmManPed.quSQL,SQL do begin
+
+          Close;
+          Text := ' Select Sum(PedRe2.BasIcm) as BasIcm,'+
+                  '        Sum(PedRe2.TotIcm) as TotIcm'+
+                  ' From PedRe2'+
+                  ' Where PedRe2.CodEmp = '+ QuotedStr(IntToStr(fmManPed.PedResCodEmp.Value)) +
+                  '   and PedRe2.DteRes = '+ QuotedStr(fDateToSQL(fmManPed.PedResDteRes.Value)) +
+                  '   and PedRe2.NumRes = '+ QuotedStr(IntToStr(fmManPed.PedResNumRes.Value)) +
+                  '   and PedRe2.CodCfo = '+ QuotedStr('6.403') ;
+          Open;
+
+          BasIcm := BasIcm + FieldbyName('BasIcm').AsFloat;
+          TotIcm := TotIcm + FieldbyName('TotIcm').AsFloat;
+
+     end;
+
+     with fmManPed.quSQL,SQL do begin
+
+          Close;
+          Text := ' Select Sum(PedRe2.BasIcm) as BasIcm,'+
+                  '        Sum(PedRe2.TotIcm) as TotIcm'+
+                  ' From PedRe2'+
+                  ' Where PedRe2.CodEmp = '+ QuotedStr(IntToStr(fmManPed.PedResCodEmp.Value)) +
+                  '   and PedRe2.DteRes = '+ QuotedStr(fDateToSQL(fmManPed.PedResDteRes.Value)) +
+                  '   and PedRe2.NumRes = '+ QuotedStr(IntToStr(fmManPed.PedResNumRes.Value)) +
+                  '   and PedRe2.CodCfo = '+ QuotedStr('6.411') ;
+          Open;
+
+          BasIcm := BasIcm + FieldbyName('BasIcm').AsFloat;
+          TotIcm := TotIcm + FieldbyName('TotIcm').AsFloat;
+
+     end;
+
+     if (BasIcm > 0) or (TotIcm > 0) then begin
+
+        if Trim( Ob1Fat ) = '' then Ob1Fat := 'OPERACAO PROPRIA'
+
+        else if Trim( Ob2Fat ) = '' then Ob2Fat := 'OPERACAO PROPRIA'
+        else if Trim( Ob3Fat ) = '' then Ob3Fat := 'OPERACAO PROPRIA'
+        else if Trim( Ob4Fat ) = '' then Ob4Fat := 'OPERACAO PROPRIA'
+        else if Trim( Ob5Fat ) = '' then Ob5Fat := 'OPERACAO PROPRIA'
+        else if Trim( Ob6Fat ) = '' then Ob6Fat := 'OPERACAO PROPRIA'
+        else if Trim( Ob7Fat ) = '' then Ob7Fat := 'OPERACAO PROPRIA'
+        else if Trim( Ob8Fat ) = '' then Ob8Fat := 'OPERACAO PROPRIA';
+
+        if Trim( Ob2Fat ) = '' then Ob2Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm)
+
+        else if Trim( Ob3Fat ) = '' then Ob3Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm)
+        else if Trim( Ob4Fat ) = '' then Ob4Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm)
+        else if Trim( Ob5Fat ) = '' then Ob5Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm)
+        else if Trim( Ob6Fat ) = '' then Ob6Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm)
+        else if Trim( Ob7Fat ) = '' then Ob7Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm)
+        else if Trim( Ob8Fat ) = '' then Ob8Fat := 'BASE DE CALCULO = '+FormatFloat('###,###,##0.00',BasIcm);
+
+        if Trim( Ob3Fat ) = '' then Ob3Fat := 'VALOR DO ICMS = '+FormatFloat('###,###,##0.00',TotIcm)
+
+        else if Trim( Ob4Fat ) = '' then Ob4Fat := 'VALOR DO ICMS = '+FormatFloat('###,###,##0.00',TotIcm)
+        else if Trim( Ob5Fat ) = '' then Ob5Fat := 'VALOR DO ICMS = '+FormatFloat('###,###,##0.00',TotIcm)
+        else if Trim( Ob6Fat ) = '' then Ob6Fat := 'VALOR DO ICMS = '+FormatFloat('###,###,##0.00',TotIcm)
+        else if Trim( Ob7Fat ) = '' then Ob7Fat := 'VALOR DO ICMS = '+FormatFloat('###,###,##0.00',TotIcm)
+        else if Trim( Ob8Fat ) = '' then Ob8Fat := 'VALOR DO ICMS = '+FormatFloat('###,###,##0.00',TotIcm);
+
+     end;
+
+        (*if Trim( Ob1Fat ) = '' then Ob1Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob2Fat ) = '' then Ob2Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob3Fat ) = '' then Ob3Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob4Fat ) = '' then Ob4Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob5Fat ) = '' then Ob5Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob6Fat ) = '' then Ob6Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob7Fat ) = '' then Ob7Fat := fmmanped.PedResNUMRES.AsString
+        else if Trim( Ob8Fat ) = '' then Ob8Fat := fmmanped.PedResNUMRES.AsString;*)
+
+
+     fmManPed.PedResOb1Fat.Value := Ob1Fat;
+     fmManPed.PedResOb2Fat.Value := Ob2Fat;
+     fmManPed.PedResOb3Fat.Value := Ob3Fat;
+     fmManPed.PedResOb4Fat.Value := Ob4Fat;
+     fmManPed.PedResOb5Fat.Value := Ob5Fat;
+     fmManPed.PedResOb6Fat.Value := Ob6Fat;
+     fmManPed.PedResOb7Fat.Value := Ob7Fat;
+     fmManPed.PedResOb8Fat.Value := Ob8Fat;
+
+     if (Trim(Ob1Fat) <> '') or
+        (Trim(Ob2Fat) <> '') or
+        (Trim(Ob3Fat) <> '') or
+        (Trim(Ob4Fat) <> '') or
+        (Trim(Ob5Fat) <> '') or
+        (Trim(Ob6Fat) <> '') or
+        (Trim(Ob7Fat) <> '') or
+        (Trim(Ob8Fat) <> '') then fmManPed.sObser := 'S';
+
+     if Trim(fmManPed.PedResOb1Fat.Value) <> '' then EdOb1Fat.Text := fmManPed.PedResOb1Fat.Value;
+     if Trim(fmManPed.PedResOb2Fat.Value) <> '' then EdOb2Fat.Text := fmManPed.PedResOb2Fat.Value;
+     if Trim(fmManPed.PedResOb3Fat.Value) <> '' then EdOb3Fat.Text := fmManPed.PedResOb3Fat.Value;
+     if Trim(fmManPed.PedResOb4Fat.Value) <> '' then EdOb4Fat.Text := fmManPed.PedResOb4Fat.Value;
+     if Trim(fmManPed.PedResOb5Fat.Value) <> '' then EdOb5Fat.Text := fmManPed.PedResOb5Fat.Value;
+     if Trim(fmManPed.PedResOb6Fat.Value) <> '' then EdOb6Fat.Text := fmManPed.PedResOb6Fat.Value;
+     if Trim(fmManPed.PedResOb7Fat.Value) <> '' then EdOb7Fat.Text := fmManPed.PedResOb7Fat.Value;
+     if Trim(fmManPed.PedResOb8Fat.Value) <> '' then EdOb8Fat.Text := fmManPed.PedResOb8Fat.Value;
+
+     if Trim(fmManPed.PedResOb1Fat.Value) <> '' then EdOb1Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb2Fat.Value) <> '' then EdOb2Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb3Fat.Value) <> '' then EdOb3Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb4Fat.Value) <> '' then EdOb4Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb5Fat.Value) <> '' then EdOb5Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb6Fat.Value) <> '' then EdOb6Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb7Fat.Value) <> '' then EdOb7Fat.Enabled := False;
+     if Trim(fmManPed.PedResOb8Fat.Value) <> '' then EdOb8Fat.Enabled := False;
+
+     if Trim(fmManPed.PedResOb1Fat.Value) <> '' then EdOb1Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb2Fat.Value) <> '' then EdOb2Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb3Fat.Value) <> '' then EdOb3Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb4Fat.Value) <> '' then EdOb4Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb5Fat.Value) <> '' then EdOb5Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb6Fat.Value) <> '' then EdOb6Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb7Fat.Value) <> '' then EdOb7Fat.Font.Style := [fsBold];
+     if Trim(fmManPed.PedResOb8Fat.Value) <> '' then EdOb8Fat.Font.Style := [fsBold];
+
+  end;
+
+  if EdOb1Fat.Enabled then
+     EdOb1Fat.SetFocus
+  else
+     begin
+
+     if EdOb2Fat.Enabled then
+        EdOb2Fat.SetFocus
+     else
+        begin
+
+        if EdOb3Fat.Enabled then
+           EdOb3Fat.SetFocus
+        else
+           begin
+
+           if EdOb4Fat.Enabled then
+              EdOb4Fat.SetFocus
+           else
+              begin
+
+              if EdOb5Fat.Enabled then
+                 EdOb5Fat.SetFocus
+              else
+                 begin
+
+                 if EdOb6Fat.Enabled then
+                    EdOb6Fat.SetFocus
+                 else
+                    begin
+
+                    if EdOb7Fat.Enabled then
+                       EdOb7Fat.SetFocus
+                    else
+                       begin
+
+                       if EdOb8Fat.Enabled then
+                          EdOb8Fat.SetFocus
+                       else
+                          bContinuar.SetFocus;
+
+                    end;
+                 end;
+              end;
+           end;
+        end;
+     end;
+  end;
+end;
+
+procedure TfmManPe4.bRetornarClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TfmManPe4.bContinuarClick(Sender: TObject);
+begin
+
+  ActiveControl := nil;
+
+  fmManPed.PedResOb1Fat.Value := EdOb1Fat.Text;
+  fmManPed.PedResOb2Fat.Value := EdOb2Fat.Text;
+  fmManPed.PedResOb3Fat.Value := EdOb3Fat.Text;
+  fmManPed.PedResOb4Fat.Value := EdOb4Fat.Text;
+  fmManPed.PedResOb5Fat.Value := EdOb5Fat.Text;
+  fmManPed.PedResOb6Fat.Value := EdOb6Fat.Text;
+  fmManPed.PedResOb7Fat.Value := EdOb7Fat.Text;
+  fmManPed.PedResOb8Fat.Value := EdOb8Fat.Text;
+
+  with fmManPed.PedRes do begin
+
+       fmManGDB.dbMain.StartTransaction; {Inicia a Transação};
+
+       try
+
+          ApplyUpdates; {Tenta aplicar as alterações};
+
+          fmManGDB.dbMain.Commit; {confirma todas as alterações fechando a transação};
+
+       except
+
+          fmManGDB.dbMain.Rollback; {desfaz as alterações se acontecer um erro};
+
+          if fmManPed.PedRes.State = dsBrowse then fmManPed.PedRes.Edit;
+
+          EdOb1Fat.SetFocus;
+
+          raise;
+
+       end;
+
+       CommitUpdates; {sucesso!, limpa o cache...}
+
+  end;
+
+  fmManPed.PedRes.Close;
+  fmManPed.PedRes.Open;
+
+  try
+
+     fmManPe3 := TfmManPe3.Create(Self);
+
+     fmManPe3.ShowModal;
+
+  finally
+
+     FreeAndNil(fmManPe3);
+
+  end;
+
+  if fmManPed.Finalizar = 'S' then
+     Close
+  else
+     begin
+
+     fmManPed.PedRes.Edit;
+
+     if EdOb1Fat.Enabled then
+        EdOb1Fat.SetFocus
+     else
+        begin
+
+        if EdOb2Fat.Enabled then
+           EdOb2Fat.SetFocus
+        else
+           begin
+
+           if EdOb3Fat.Enabled then
+              EdOb3Fat.SetFocus
+           else
+              begin
+
+              if EdOb4Fat.Enabled then
+                 EdOb4Fat.SetFocus
+              else
+                 begin
+
+                 if EdOb5Fat.Enabled then
+                    EdOb5Fat.SetFocus
+                 else
+                    begin
+
+                    if EdOb6Fat.Enabled then
+                       EdOb6Fat.SetFocus
+                    else
+                       begin
+
+                       if EdOb7Fat.Enabled then
+                          EdOb7Fat.SetFocus
+                       else
+                          begin
+
+                          if EdOb8Fat.Enabled then
+                             EdOb8Fat.SetFocus
+                          else
+                             bContinuar.SetFocus;
+
+                       end;
+                    end;
+                 end;
+              end;
+           end;
+        end;
+     end;
+  end;
+end;
+
+procedure TfmManPe4.PaintBoxPaint(Sender: TObject);
+begin
+  with Sender as TPaintBox do
+       FillGrayGradientRect(PaintBox.Canvas, PaintBox.ClientRect, PaintBox.Color);
+end;
+
+procedure TfmManPe4.EdPraPe3KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not ( key in [ '0'..'9' ] ) then key := #0;
+end;
+
+procedure TfmManPe4.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  if fmManPed.PedRes.State <> dsBrowse then fmManPed.PedRes.CancelUpdates;
+end;
+
+end.

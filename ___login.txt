@@ -1,0 +1,1 @@
+externo##177.137.97.131:/rede/_wgdad/interbase/biasi.fdb @@Servidor Remoto ***177.137.97.131:/opt/firebird/security.fdb***
