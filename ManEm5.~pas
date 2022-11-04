@@ -261,8 +261,7 @@ begin
 
   end;
 
-  if PedResQtpRes.Value > 0 then
-    PraMed := PraMed / StrToFloat(IntToStr(PedResQtpRes.Value));
+  if PedResQtpRes.Value > 0 then PraMed := PraMed / StrToFloat(IntToStr(PedResQtpRes.Value));
 
 end;
 
@@ -362,6 +361,7 @@ begin
   pnTotIPI.Caption := FormatFloat('###,###,##0.00', PedResTotipi.Value);
 
   ppQtsRes.Caption := IntToStr(PedResQtiRes.Value);
+
 
 end;
 

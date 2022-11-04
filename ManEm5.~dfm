@@ -1,10 +1,10 @@
 object fmManEm5: TfmManEm5
-  Left = -8
-  Top = -8
+  Left = 278
+  Top = 22
   BorderStyle = bsSingle
   Caption = 'Pedidos'
-  ClientHeight = 706
-  ClientWidth = 1366
+  ClientHeight = 746
+  ClientWidth = 830
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
