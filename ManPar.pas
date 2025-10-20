@@ -270,6 +270,10 @@ type
     PedParORDEM_IMPRESSAO: TStringField;
     dbSUPRIMIR_QTDE_EMB: TDBCheckBox;
     PedParSUPRIMIR_QTDE_EMB: TStringField;
+    DBCheckBox27: TDBCheckBox;
+    PedParsubtrai_icms_pis: TSmallintField;
+    PedParsubtrai_icms_cofins: TSmallintField;
+    DBCheckBox28: TDBCheckBox;
     procedure FormShow(Sender: TObject);
     procedure bConfirmarClick(Sender: TObject);
     procedure bFecharClick(Sender: TObject);

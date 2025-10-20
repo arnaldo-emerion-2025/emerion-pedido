@@ -1,6 +1,6 @@
 inherited fmManPed: TfmManPed
-  Left = 299
-  Top = 179
+  Left = 351
+  Top = 87
   Caption = 'Pedidos'
   ClientHeight = 645
   ClientWidth = 1008
@@ -56,6 +56,13 @@ inherited fmManPed: TfmManPed
     Font.Style = [fsBold]
     ParentFont = False
     Transparent = True
+  end
+  object Label85: TLabel
+    Left = 16
+    Top = 296
+    Width = 37
+    Height = 13
+    Caption = 'Label85'
   end
   object Panel2: TPanel
     Left = 0
@@ -370,7 +377,8 @@ inherited fmManPed: TfmManPed
           DataField = 'ICMRE2'
           DataSource = DsRe2
           ReadOnly = False
-          DisplayFormat = '0.00'
+          DecimalPlaces = 4
+          DisplayFormat = '0.0000'
           Nullable = False
           UseThousandSeparator = True
           CorDeFoco = clInfoBk
@@ -6026,8 +6034,8 @@ inherited fmManPed: TfmManPed
       DisplayWidth = 10
       FieldName = 'ICMRE2'
       Origin = 'ISADE.PEDRE2.ICMRE2'
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
+      DisplayFormat = '#,####0.0000'
+      EditFormat = '#,##0.0000'
     end
     object PedRe2TOTVEN: TFloatField
       DisplayWidth = 10

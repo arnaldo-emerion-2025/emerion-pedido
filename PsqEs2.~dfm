@@ -3782,6 +3782,7 @@ object fmPsqEs2: TfmPsqEs2
       ' EstPro.QtsPro,'
       ' EstPro.SaiIpi,'
       ' EstPro.EntIpi,'
+      ' EstPro.CodNcm,'
       ' EstPro.ClfSai,'
       ' EstPro.ClfEnt,'
       ' EstPro.SaiIcm,'
@@ -3804,7 +3805,7 @@ object fmPsqEs2: TfmPsqEs2
       'Where EstPro.CodClp = :CodClp'
       'Order by EstPro.DscPro')
     ValidateWithMask = True
-    Left = 256
+    Left = 264
     Top = 4
     ParamData = <
       item
@@ -3943,6 +3944,9 @@ object fmPsqEs2: TfmPsqEs2
       FieldName = 'IDEPRO'
       FixedChar = True
       Size = 30
+    end
+    object EstProCODNCM: TStringField
+      FieldName = 'CODNCM'
     end
   end
   object DsPro: TwwDataSource

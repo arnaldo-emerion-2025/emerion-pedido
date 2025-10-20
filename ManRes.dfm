@@ -1,6 +1,6 @@
 inherited fmManRes: TfmManRes
-  Left = 237
-  Top = 105
+  Left = 261
+  Top = 141
   Caption = 'Pedidos'
   ClientHeight = 528
   ClientWidth = 789
@@ -2311,10 +2311,10 @@ inherited fmManRes: TfmManRes
     end
     object PedRe2ICMRE2: TFloatField
       DisplayLabel = '    ICMS'
-      DisplayWidth = 4
+      DisplayWidth = 6
       FieldName = 'ICMRE2'
-      DisplayFormat = '###0'
-      Precision = 2
+      DisplayFormat = '####0,0000'
+      Precision = 4
     end
     object PedRe2TOTRE2: TFloatField
       DisplayLabel = '   Total do Item'
@@ -2497,7 +2497,7 @@ inherited fmManRes: TfmManRes
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
     OpcoesPreview.Remalina = False
-    OpcoesPreview.CaptionPreview = 'Pedidos'
+    OpcoesPreview.CaptionPreview = 'Rdprint Preview'
     OpcoesPreview.PreviewZoom = 100
     OpcoesPreview.CorPapelPreview = clWhite
     OpcoesPreview.CorLetraPreview = clBlack
@@ -2517,9 +2517,9 @@ inherited fmManRes: TfmManRes
     RegistroUsuario.AutorizacaoKey = 'BBCL-1878-VBFC-6009-GNHN'
     About = 'RDprint 4.0d - Registrado'
     Acentuacao = Transliterate
-    CaptionSetup = 'Setup'
-    TitulodoRelatorio = 'Pedidos'
-    UsaGerenciadorImpr = False
+    CaptionSetup = 'Rdprint Setup'
+    TitulodoRelatorio = 'Gerado por RDprint'
+    UsaGerenciadorImpr = True
     CorForm = clBtnFace
     CorFonte = clBlack
     Impressora = Epson
@@ -2562,7 +2562,6 @@ inherited fmManRes: TfmManRes
       'SIGTRON=BOBINA'
       'SWEDA=BOBINA'
       'BEMATECH=BOBINA')
-    PortaComunicacao = 'LPT1'
     MostrarProgresso = True
     TamanhoQteLinhas = 66
     TamanhoQteColunas = 80
@@ -2571,8 +2570,7 @@ inherited fmManRes: TfmManRes
     FonteTamanhoPadrao = S10cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
-    OnNewPage = RDprint1NewPage
-    Left = 36
-    Top = 335
+    Left = 80
+    Top = 120
   end
 end

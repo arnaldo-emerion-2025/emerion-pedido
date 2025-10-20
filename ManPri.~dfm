@@ -1,6 +1,6 @@
 object fmManPri: TfmManPri
-  Left = 331
-  Top = 54
+  Left = 357
+  Top = 266
   Width = 826
   Height = 622
   VertScrollBar.Visible = False

@@ -21,7 +21,7 @@ inherited fmManPar: TfmManPar
     Top = 0
     Width = 694
     Height = 525
-    ActivePage = Pedi
+    ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet

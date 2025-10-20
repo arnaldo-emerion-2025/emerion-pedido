@@ -21,7 +21,7 @@ inherited fmManPar: TfmManPar
     Top = 0
     Width = 694
     Height = 525
-    ActivePage = TabSheet3
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -740,7 +740,7 @@ inherited fmManPar: TfmManPar
       end
       object Label24: TLabel
         Left = 5
-        Top = 241
+        Top = 333
         Width = 169
         Height = 13
         Caption = 'Desconto Sobre o Preço de Custo ?'
@@ -772,7 +772,7 @@ inherited fmManPar: TfmManPar
       end
       object Label38: TLabel
         Left = 320
-        Top = 241
+        Top = 333
         Width = 322
         Height = 13
         Caption = 
@@ -790,7 +790,7 @@ inherited fmManPar: TfmManPar
       end
       object Label39: TLabel
         Left = 320
-        Top = 260
+        Top = 352
         Width = 302
         Height = 13
         Caption = 'ao se praticar preços de Venda menores que o Custo do Item.)'
@@ -935,7 +935,7 @@ inherited fmManPar: TfmManPar
       end
       object EdPerCst: TdxDBColorCurrencyEdit
         Left = 202
-        Top = 237
+        Top = 329
         Width = 114
         Color = 16577773
         Enabled = False
@@ -1007,6 +1007,30 @@ inherited fmManPar: TfmManPar
         ValueChecked = 'Sim'
         ValueUnchecked = 'Nao'
         Height = 18
+      end
+      object DBCheckBox27: TDBCheckBox
+        Left = 3
+        Top = 226
+        Width = 238
+        Height = 17
+        Caption = 'Subtrair Valor do ICMS da  base de PIS'
+        DataField = 'subtrai_icms_pis'
+        DataSource = DsPar
+        TabOrder = 6
+        ValueChecked = '1'
+        ValueUnchecked = '0'
+      end
+      object DBCheckBox28: TDBCheckBox
+        Left = 3
+        Top = 242
+        Width = 238
+        Height = 17
+        Caption = 'Subtrair Valor do ICMS da  base de COFINS'
+        DataField = 'subtrai_icms_cofins'
+        DataSource = DsPar
+        TabOrder = 7
+        ValueChecked = '1'
+        ValueUnchecked = '0'
       end
     end
     object Pedi: TTabSheet
@@ -3293,6 +3317,12 @@ inherited fmManPar: TfmManPar
       FixedChar = True
       Size = 1
     end
+    object PedParsubtrai_icms_pis: TSmallintField
+      FieldName = 'subtrai_icms_pis'
+    end
+    object PedParsubtrai_icms_cofins: TSmallintField
+      FieldName = 'subtrai_icms_cofins'
+    end
   end
   object DsPar: TDataSource
     DataSet = PedPar
@@ -3404,9 +3434,12 @@ inherited fmManPar: TfmManPar
       '  TIPO_IMPRESSAO_VIASEP = :TIPO_IMPRESSAO_VIASEP,'
       '  DUP_ITEM_PEDIDO = :DUP_ITEM_PEDIDO,'
       '  TOTALIZAQTDVIASEP = :TOTALIZAQTDVIASEP,'
-      '  SUPRIMIR_QTDE_EMB = :SUPRIMIR_QTDE_EMB'
+      '  SUPRIMIR_QTDE_EMB = :SUPRIMIR_QTDE_EMB,'
+      '  subtrai_icms_pis = :subtrai_icms_pis,'
+      '  subtrai_icms_cofins = :subtrai_icms_cofins'
       'where'
-      '  PEDDSC = :OLD_PEDDSC')
+      '  PEDDSC = :OLD_PEDDSC'
+      ' ')
     InsertSQL.Strings = (
       'insert into PEDPAR'
       
@@ -3457,7 +3490,9 @@ inherited fmManPar: TfmManPar
       
         '   FLGATIVO, ORDEM_IMPRESSAO, ORDEM_VIASEPLOC, TIPO_IMPRESSAO_VI' +
         'ASEP, DUP_ITEM_PEDIDO, '
-      '   TOTALIZAQTDVIASEP, SUPRIMIR_QTDE_EMB)'
+      
+        '   TOTALIZAQTDVIASEP, SUPRIMIR_QTDE_EMB, subtrai_icms_pis, subtr' +
+        'ai_icms_cofins)'
       'values'
       
         '  (:PEDDSC, :TIPDSC, :FLGBLQ, :FLGATR, :FLGEXP, :FLGCRE, :FLGDSC' +
@@ -3512,7 +3547,9 @@ inherited fmManPar: TfmManPar
         'DEM_VIASEPLOC, '
       
         '   :TIPO_IMPRESSAO_VIASEP, :DUP_ITEM_PEDIDO, :TOTALIZAQTDVIASEP,' +
-        ' :SUPRIMIR_QTDE_EMB)')
+        ' :SUPRIMIR_QTDE_EMB,'
+      '   :subtrai_icms_pis, :subtrai_icms_cofins)'
+      ' ')
     DeleteSQL.Strings = (
       'delete from PEDPAR'
       'where'

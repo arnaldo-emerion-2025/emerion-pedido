@@ -51,10 +51,6 @@ UsePackages=0
 [Parameters]
 RunParams=senhaNova
 HostApplication=
-[Language]
-ActiveLang=
-ProjectLang=$00000416
-RootDir=
 [Version Info]
 IncludeVerInfo=1
 AutoIncBuild=0
@@ -80,12 +76,12 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 [Excluded Packages]
-C:\Program Files (x86)\Developer Express Inc\ExpressPageControl\Delphi 5\Lib\dcldxPageControlD5.bpl=ExpressPageControl by Developer Express Inc.
+$(DELPHI)\Bin\dclite50.bpl=Borland Integrated Translation Environment
+$(DELPHI)\Projects\Bpl\EmailSak.bpl=SakEmail by SAK Productions
 $(DELPHI)\Projects\Bpl\dclIndy50.bpl=Internet Direct "Indy" for D5 Property and Component Editors
 $(DELPHI)\Bin\dcltqr50.bpl=TeeChart 5.0 for QuickReport Components Design Package
-$(DELPHI)\Projects\Bpl\EmailSak.bpl=SakEmail by SAK Productions
-C:\Componentes\Delphi 5\Quickrep5\QR5DesignD5.bpl=QuickReport 5 Components (Delphi 5)
+C:\Program Files (x86)\Developer Express Inc\ExpressPageControl\Delphi 5\Lib\dcldxPageControlD5.bpl=ExpressPageControl by Developer Express Inc.
 C:\Program Files (x86)\Developer Express Inc\ExpressInspector\Delphi 5\Lib\dcldxExRwD5.bpl=ExpressInspector Extended Rows
 C:\Program Files (x86)\Developer Express Inc\ExpressPrinting System\Delphi 5\Lib\dxPSdxDBTVLnkD5.bpl=ExpressPrinting System ReportLink for ExpressDBTree by Developer Express Inc.
 C:\Program Files (x86)\Developer Express Inc\ExpressPrinting System\Delphi 5\Lib\dxPSdxFCLnkD5.bpl=ExpressPrinting System ReportLinks for ExpressFlowChart by Developer Express Inc.
-W:\Temp\bpls\dphmts50.bpl=Borland Delphi Core MTS IDE Package
+$(DELPHI)\Projects\BPL\QR5DesignD5.bpl=QuickReport 5 Components (Delphi 5)

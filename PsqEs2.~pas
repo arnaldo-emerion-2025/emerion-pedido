@@ -286,6 +286,7 @@ type
     Label42: TLabel;
     Label17: TLabel;
     Label75: TLabel;
+    EstProCODNCM: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure DsProDataChange(Sender: TObject; Field: TField);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

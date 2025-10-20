@@ -4536,7 +4536,7 @@ begin
 
       end;
 
-      if(quSql.FieldbyName('Reg').AsInteger > 100) then
+      if(quSql.FieldbyName('Reg').AsInteger > 0) then
       begin
          showMessage('Item duplicado!');
       end;

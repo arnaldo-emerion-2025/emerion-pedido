@@ -969,6 +969,18 @@ inherited fmPedR15: TfmPedR15
       SummaryFooterType = cstSum
       SummaryFooterFormat = '###,###,##0.00'
     end
+    object NOMCLI: TdxDBGridColumn
+      Caption = 'Razão Social'
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'NOMCLI'
+    end
+    object CGCCLI: TdxDBGridMaskColumn
+      Caption = 'CNPJ'
+      BandIndex = 0
+      RowIndex = 0
+      FieldName = 'CGCCLI'
+    end
   end
   object bImprimir: TBitBtn
     Left = 620
@@ -1288,6 +1300,8 @@ inherited fmPedR15: TfmPedR15
       ' PedLib.DteFat,'
       ' PedLib.CodCli,'
       ' FinCli.ApeCli,'
+      ' FinCli.NomCli,'
+      ' FinCli.CgcCli,'
       ' PedLib.CodVen,'
       ' FinVen.ApeVen,'
       ' Round(Sum((PedLb2.UltQts * PedLb2.VlqLb2)),2) TotLiq,'
@@ -1350,8 +1364,8 @@ inherited fmPedR15: TfmPedR15
       ' Where 1 = 2'
       
         ' Group by PedLb2.CodEmp, PedLb2.DteRes,PedLb2.NumRes,PedLb2.SeqL' +
-        'ib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,PedLi' +
-        'b.CodVen,FinVen.ApeVen'
+        'ib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,FinCl' +
+        'i.NomCli,FinCli.CgcCli,PedLib.CodVen,FinVen.ApeVen'
       
         ' Order by PedLb2.CodEmp, PedLb2.DteRes,PedLb2.NumRes,PedLb2.SeqL' +
         'ib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,PedLi' +
@@ -1498,6 +1512,13 @@ inherited fmPedR15: TfmPedR15
       DisplayFormat = '0.00'
       EditFormat = '0.00'
     end
+    object PedR15CGCCLI: TStringField
+      FieldName = 'CGCCLI'
+    end
+    object PedR15NOMCLI: TStringField
+      FieldName = 'NOMCLI'
+      Size = 50
+    end
   end
   object DsR15: TwwDataSource
     DataSet = PedR15
@@ -1529,7 +1550,7 @@ inherited fmPedR15: TfmPedR15
     object dxComponentPrinterLink1: TdxDBGridReportLink
       Active = True
       Component = grR15
-      DateTime = 43438.7576911227
+      DateTime = 45594.6099322685
       DesignerHelpContext = 0
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350

@@ -829,6 +829,7 @@ type
     PedResUSUANT: TIntegerField;
     PedResFLGMOBILE: TStringField;
     PedResALIQ_CRED_SN: TFloatField;
+    Label85: TLabel;
     procedure SaiGrupo;
     procedure SaiCliente;
     procedure SaiProduto;
@@ -2938,7 +2939,7 @@ begin
                 ' EstPro.LocPro, EstPro.CodUne, EstPro.CodUns, EstPro.QtePro, EstPro.QtsPro, EstPro.SaiIpi, EstPro.ClfSai,' + _BR +
                 ' EstPro.SaiIcm, EstPro.SimPro, EstPro.CodSt1, EstPro.CodSt2, EstPro.QtdEmb, EstPro.ImgPro, EstPro.FlgPro,' + _BR +
                 ' EstPro.CbaPro, EstPro.WebPro, EstPro.CodCat, EstPro.CodTip, EstPro.CodMrc, EstPro.NumPro, EstPro.CodAnt,' + _BR +
-                ' EstPro.QtdVol,EstPro.ClfEnt,EstPro.EntIcm,EstPro.IdePro ' + _BR +
+                ' EstPro.QtdVol,EstPro.ClfEnt,EstPro.EntIcm,EstPro.IdePro,Estpro.CODNCM ' + _BR +
                 ' From EstPro' + _BR +
                 ' Where EstPro.CodClp = ' + QuotedStr('1') + _BR;
               //'   and EstPro.FlbPro = ' + QuotedStr(' ');

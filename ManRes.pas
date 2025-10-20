@@ -158,7 +158,6 @@ type
     Label27: TLabel;
     Estado: TdxColorPickEdit;
     Label30: TLabel;
-    RDprint1: TRDprint;
     PedResFLGFEC: TStringField;
     Label31: TLabel;
     DBText1: TDBText;
@@ -173,6 +172,7 @@ type
     Panel5: TPanel;
     pnCotacao: TPanel;
     PedResID_PEDCTA: TIntegerField;
+    RDprint1: TRDprint;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure bPsqCliClick(Sender: TObject);

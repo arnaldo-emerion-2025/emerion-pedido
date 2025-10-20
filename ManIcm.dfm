@@ -694,7 +694,8 @@ inherited fmManIcm: TfmManIcm
         Alignment = taRightJustify
         DataField = 'PERICM'
         DataSource = DsIcm
-        DisplayFormat = '0.00'
+        DecimalPlaces = 4
+        DisplayFormat = '0.0000'
         Nullable = False
         CorDeFoco = clInfoBk
         StoredValues = 1
@@ -1403,8 +1404,8 @@ inherited fmManIcm: TfmManIcm
       DisplayWidth = 10
       FieldName = 'PERICM'
       Origin = 'ISADE.ESTICM.PERICM'
-      DisplayFormat = '#,##0.00'
-      Precision = 2
+      DisplayFormat = '#,####0.0000'
+      Precision = 4
     end
     object EstIcmUFEMITENTE: TStringField
       DisplayWidth = 2

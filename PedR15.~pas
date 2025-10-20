@@ -119,6 +119,10 @@ type
     PedR15MARGPED: TFloatField;
     MARGBRT: TdxDBGridMaskColumn;
     MARGPED: TdxDBGridMaskColumn;
+    PedR15CGCCLI: TStringField;
+    PedR15NOMCLI: TStringField;
+    NOMCLI: TdxDBGridColumn;
+    CGCCLI: TdxDBGridMaskColumn;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BbPsqEmpClick(Sender: TObject);
@@ -272,6 +276,8 @@ begin
                      '        PedLib.DteFat, ' + _BR +
                      '        PedLib.CodCli, ' + _BR +
                      '        FinCli.ApeCli, ' + _BR +
+                     '        FinCli.CgcCli, ' + _BR +
+                     '        FinCli.NomCli, ' + _BR +
                      '        PedLib.CodVen, ' + _BR +
                      '        FinVen.ApeVen, ' + _BR +
                      '        Round(Sum((PedLb2.UltQts * PedLb2.VlqLb2)),2) TotLiq, ' + _BR +
@@ -318,9 +324,9 @@ begin
      if Trim(EdPsqCodCve.Text) <> '' then
        PedR15.SQL.Text := PedR15.SQL.Text + ' and FinVen.CodCve = ''' + EdPsqCodCve.Text + '''' + _BR;
 
-     PedR15.SQL.Text := PedR15.SQL.Text + ' Group by PedLib.CodEmp, PedLib.DteRes,PedLib.NumRes,PedLib.SeqLib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,PedLib.CodVen,FinVen.ApeVen' + _BR;
+     PedR15.SQL.Text := PedR15.SQL.Text + ' Group by PedLib.CodEmp, PedLib.DteRes,PedLib.NumRes,PedLib.SeqLib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,FinCli.CgcCli,FinCli.NomCli,PedLib.CodVen,FinVen.ApeVen' + _BR;
 
-     PedR15.SQL.Text := PedR15.SQL.Text + ' Order by PedLib.CodEmp, PedLib.DteRes,PedLib.NumRes,PedLib.SeqLib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,PedLib.CodVen,FinVen.ApeVen' + _BR;
+     PedR15.SQL.Text := PedR15.SQL.Text + ' Order by PedLib.CodEmp, PedLib.DteRes,PedLib.NumRes,PedLib.SeqLib,PedLib.NroNfs,PedLib.DteFat,PedLib.CodCli,FinCli.ApeCli,FinCli.CgcCli,FinCli.NomCli,PedLib.CodVen,FinVen.ApeVen' + _BR;
 
   if debughook > 0 then
     clipboard.AsText := PedR15.SQL.Text;

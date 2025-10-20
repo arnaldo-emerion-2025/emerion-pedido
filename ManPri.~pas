@@ -1119,7 +1119,7 @@ begin
 
 end;
 
-prnction TfmManPri.enviaEmail(mostrarDialog: Boolean; assunto, corpo,
+function TfmManPri.enviaEmail(mostrarDialog: Boolean; assunto, corpo,
   destinatario: PAnsiChar; anexos: Variant; copia: TStringList): Boolean;
 begin
     if copia <> nil then

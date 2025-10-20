@@ -3805,7 +3805,7 @@ object fmPsqEs2: TfmPsqEs2
       'Where EstPro.CodClp = :CodClp'
       'Order by EstPro.DscPro')
     ValidateWithMask = True
-    Left = 256
+    Left = 264
     Top = 4
     ParamData = <
       item
