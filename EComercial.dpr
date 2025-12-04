@@ -150,7 +150,7 @@ uses
   ManEm10 in 'ManEm10.pas',
   PedR32 in 'PedR32.pas' {fmPedR32},
   ManVisuRegras in 'ManVisuRegras.pas' {FmManVisuRegras},
-  ManPfa_GERAL in '..\..\fatura\Dualcomp - DISN\Nota Fiscal\Calma_Geral\ManPfa_GERAL.pas' {man},
+  ManPfa_GERAL in '..\..\fatura\Dualcomp - DISN\Nota Fiscal\ManPfa_GERAL.pas' {man},
   ManIcm in 'ManIcm.pas' {fmManIcm},
   manRelVendaPorVendedor in '..\..\fatura\Dualcomp - DISN\Nota Fiscal\manRelVendaPorVendedor.pas' {frmRelVendaPorVendedor},
   EmaPed in 'EMAPED.pas' {fmEmaPed},

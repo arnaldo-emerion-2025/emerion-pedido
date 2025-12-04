@@ -830,6 +830,9 @@ type
     PedResFLGMOBILE: TStringField;
     PedResALIQ_CRED_SN: TFloatField;
     Label85: TLabel;
+    PedRe2FLGMOBILE: TStringField;
+    PedRe2IBSCBS_CST: TStringField;
+    PedRe2IBSCBS_C_CLASS_TRIB: TStringField;
     procedure SaiGrupo;
     procedure SaiCliente;
     procedure SaiProduto;
@@ -5201,6 +5204,9 @@ begin
           PedRe2DesRe2.AsString := Pro.PRODescPro;
           PedRe2ClsIpi.AsString := Pro.PRONCM;
           pedre2Cest.asString := Pro.PROCEST;
+
+          PedRe2IBSCBS_CST.AsString := Pro.IBSCBS_CST;
+          PedRe2IBSCBS_C_CLASS_TRIB.AsString := Pro.IBSCBS_C_CLASS_TRIB;
 
           pedre2ALIQ_FCPUFDEST.AsFloat := pro.FCPALIQ_FCPUFDEST;
           pedre2ALIQ_ICMSUFDEST.AsFloat := pro.DIFALALIQ_ICMSUFDEST;

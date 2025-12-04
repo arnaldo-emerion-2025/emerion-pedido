@@ -5557,7 +5557,9 @@ inherited fmManPed: TfmManPed
       '  ALIQ_ICMSINTER = :ALIQ_ICMSINTER,'
       '  ALIQ_ICMSINTERPART = :ALIQ_ICMSINTERPART,'
       '  ID_REGRA_FCP = :ID_REGRA_FCP,'
-      '  COD_ENQ = :COD_ENQ'
+      '  COD_ENQ = :COD_ENQ,'
+      '  IBSCBS_CST = :IBSCBS_CST,'
+      '  IBSCBS_C_CLASS_TRIB = :IBSCBS_C_CLASS_TRIB'
       'where'
       '  CODEMP = :OLD_CODEMP and'
       '  DTERES = :OLD_DTERES and'
@@ -5567,48 +5569,57 @@ inherited fmManPed: TfmManPed
       'insert into PedRe2'
       
         '  (CLSIPI, CODEMP, DTERES, NUMRES, SEQRE2, CODEIT, CODCLP, CODGR' +
-        'U, CODSUB, '
-      
-        '   CODPRO, CODTAM, CODCOR, DESRE2, OBSRE2, CODST1, CODST2, CODUN' +
-        'D, REFRE2, '
+        'U, '
+      'CODSUB, '
+      '   CODPRO, CODTAM, CODCOR, DESRE2, OBSRE2, CODST1, CODST2, '
+      'CODUND, REFRE2, '
       
         '   LIQRE2, BRTRE2, TABPRC, CODPRM, SEQPR2, QTPRE2, VLURE2, VLQRE' +
-        '2, DSCRE2, '
+        '2, '
+      'DSCRE2, '
       
         '   VDSRE2, DSPRE2, VDPRE2, PACRE2, VACRE2, DSCCOM, VDSCOM, IPIRE' +
-        '2, ICMRE2, '
+        '2, '
+      'ICMRE2, '
       
         '   CODSTR, TIPSTR, REGIPI, TIPIPI, BSCIPI, REGICM, TIPICM, REDIC' +
         'M, BSCICM, '
       
         '   INCREV, INCFIN, PEDCLI, FLGDUP, CODTXF, CODCFO, ICMSUB, MRGSU' +
-        'B, BASESB, '
+        'B, '
+      'BASESB, '
       
         '   ALIQPIS, CSTPIS, ALIQCOF, CSTCOF, CSTIPI, TOTSEG, TOTOUTDESP,' +
-        ' TOTDESCINC, '
-      
-        '   NUMPEDCOMPRA, NUMITEMCOMPRA, ALIQPIS_ZF, ALIQCOF_ZF, REDSUB, ' +
-        'REGSUB, '
+        ' '
+      'TOTDESCINC, '
+      '   NUMPEDCOMPRA, NUMITEMCOMPRA, ALIQPIS_ZF, ALIQCOF_ZF, REDSUB, '
+      'REGSUB, '
       
         '   FRTICM, SEGICM, DESICM, FRTIPI, SEGIPI, DESIPI, CODDESONERACA' +
-        'O, CODTXF2, '
+        'O, '
+      'CODTXF2, '
       
         '   ID_ESTICM, CEST, ALIQ_FCPUFDEST, ALIQ_ICMSUFDEST, ALIQ_ICMSIN' +
-        'TER, ALIQ_ICMSINTERPART, '
-      '   ID_REGRA_FCP, COD_ENQ)'
+        'TER, '
+      'ALIQ_ICMSINTERPART, '
+      '   ID_REGRA_FCP, COD_ENQ, IBSCBS_CST, IBSCBS_C_CLASS_TRIB)'
       'values'
       
         '  (:CLSIPI, :CODEMP, :DTERES, :NUMRES, :SEQRE2, :CODEIT, :CODCLP' +
-        ', :CODGRU, '
+        ', '
+      ':CODGRU, '
       
         '   :CODSUB, :CODPRO, :CODTAM, :CODCOR, :DESRE2, :OBSRE2, :CODST1' +
-        ', :CODST2, '
+        ', '
+      ':CODST2, '
       
         '   :CODUND, :REFRE2, :LIQRE2, :BRTRE2, :TABPRC, :CODPRM, :SEQPR2' +
-        ', :QTPRE2, '
+        ', '
+      ':QTPRE2, '
       
         '   :VLURE2, :VLQRE2, :DSCRE2, :VDSRE2, :DSPRE2, :VDPRE2, :PACRE2' +
-        ', :VACRE2, '
+        ', '
+      ':VACRE2, '
       
         '   :DSCCOM, :VDSCOM, :IPIRE2, :ICMRE2, :CODSTR, :TIPSTR, :REGIPI' +
         ', :TIPIPI, '
@@ -5617,20 +5628,21 @@ inherited fmManPed: TfmManPed
         ', :PEDCLI, '
       
         '   :FLGDUP, :CODTXF, :CODCFO, :ICMSUB, :MRGSUB, :BASESB, :ALIQPI' +
-        'S, :CSTPIS, '
+        'S, '
+      ':CSTPIS, '
       
         '   :ALIQCOF, :CSTCOF, :CSTIPI, :TOTSEG, :TOTOUTDESP, :TOTDESCINC' +
-        ', :NUMPEDCOMPRA, '
-      
-        '   :NUMITEMCOMPRA, :ALIQPIS_ZF, :ALIQCOF_ZF, :REDSUB, :REGSUB, :' +
-        'FRTICM, '
+        ', '
+      ':NUMPEDCOMPRA, '
+      '   :NUMITEMCOMPRA, :ALIQPIS_ZF, :ALIQCOF_ZF, :REDSUB, :REGSUB, '
+      ':FRTICM, '
       
         '   :SEGICM, :DESICM, :FRTIPI, :SEGIPI, :DESIPI, :CODDESONERACAO,' +
         ' :CODTXF2, '
-      
-        '   :ID_ESTICM, :CEST, :ALIQ_FCPUFDEST, :ALIQ_ICMSUFDEST, :ALIQ_I' +
-        'CMSINTER, '
-      '   :ALIQ_ICMSINTERPART, :ID_REGRA_FCP, :COD_ENQ)')
+      '   :ID_ESTICM, :CEST, :ALIQ_FCPUFDEST, :ALIQ_ICMSUFDEST, '
+      ':ALIQ_ICMSINTER, '
+      '   :ALIQ_ICMSINTERPART, :ID_REGRA_FCP, :COD_ENQ, :IBSCBS_CST, '
+      ':IBSCBS_C_CLASS_TRIB)')
     DeleteSQL.Strings = (
       'delete from PedRe2'
       'where'
@@ -5674,17 +5686,17 @@ inherited fmManPed: TfmManPed
     ParamData = <
       item
         DataType = ftInteger
-        Name = 'CodEmp'
+        Name = 'CODEMP'
         ParamType = ptInput
       end
       item
         DataType = ftDateTime
-        Name = 'DteRes'
+        Name = 'DTERES'
         ParamType = ptInput
       end
       item
         DataType = ftInteger
-        Name = 'NumRes'
+        Name = 'NUMRES'
         ParamType = ptInput
       end>
     object PedRe2CODEMP: TIntegerField
@@ -7033,6 +7045,21 @@ inherited fmManPed: TfmManPed
       FieldName = 'COD_ENQ'
       FixedChar = True
       Size = 3
+    end
+    object PedRe2FLGMOBILE: TStringField
+      FieldName = 'FLGMOBILE'
+      FixedChar = True
+      Size = 1
+    end
+    object PedRe2IBSCBS_CST: TStringField
+      FieldName = 'IBSCBS_CST'
+      FixedChar = True
+      Size = 3
+    end
+    object PedRe2IBSCBS_C_CLASS_TRIB: TStringField
+      FieldName = 'IBSCBS_C_CLASS_TRIB'
+      FixedChar = True
+      Size = 6
     end
   end
   object UpRe2Fec: TUpdateSQL

@@ -216,7 +216,7 @@ procedure TfmManPri.FormCreate(Sender: TObject);
 begin
   configPadrao;
 
-  fmManGdb.CheckExecutavelAtu;
+  //fmManGdb.CheckExecutavelAtu;
 
   GModAce := 'PED';
 
